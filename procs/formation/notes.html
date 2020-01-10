@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="../theme/css/prism.css" rel="stylesheet" />
+    <title>Notes</title>
+</head>
+<article>
+    <section class="toc" id="processing-toc">
+        <ul>
+            <li><a href="#"></a></li>
+            <li><a href="#3d-2d-projection">3D - 2D Transformations</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+
+        </ul>
+    </section>
+    <div class="container-fluid improc-container">
+        <section class="improc-section" id="geometric-primitive">
+            <h3>Geometric Primitives</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="geometric-primitive-problem-statement" class="lead text-wrap text-monospace" style="width: 50em;">
+                    How do we define shapes ? By using geometric primitives. What
+                    are those ?
+                </p>
+            </div>
+            <h4>Description</h4>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                Here are some geometric primitives and their representations.
+                <dl class="row text-monospace text-wrap container-fluid">
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, x, is defined using two real numbers is
+                            expressed as \(\textbf{x} = (x, y) \in R^2\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point in homogeneous coordinates
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, \(\tilde x\), is defined using three real numbers is
+                            expressed as \[
+                            \tilde x = (x, y, w) \in P^2
+                            \] where \(P^2 = R^3 - (0, 0, 0)\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point as Augmented Vector
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            An augmented vector, \( \bar x \) is defined as \(
+                            \bar x = (x, y, 1) \). Its relation to homogeneous
+                            coordinate is \[
+                            \tilde x = \bar x w = (x * w, y * w, w)
+                            \]
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Line
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A line, \(\tilde l \), defined in in two dimensions is
+                            expressed as \(0 = mx - y + b\)
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="geometric-primitive-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="geometric-primitive-haskell-tab" data-toggle="tab" href="#geometric-primitive-haskell" role="tab" aria-controls="geometric-primitive-haskell" aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="geometric-primitive-python-tab" data-toggle="tab" href="#geometric-primitive-python" role="tab" aria-controls="geometric-primitive-python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="geometric-primitive-cpp-tab" data-toggle="tab" href="#geometric-primitive-cpp" role="tab" aria-controls="geometric-primitive-cpp" aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="geometric-primitive-nim-tab" data-toggle="tab" href="#geometric-primitive-nim" role="tab" aria-controls="geometric-primitive-nim" aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="geometric-primitive-red-tab" data-toggle="tab" href="#geometric-primitive-red" role="tab" aria-controls="geometric-primitive-red" aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="geometric-primitive-code-content">
+                    <div class="tab-pane fade show active" id="geometric-primitive-haskell" role="tabpanel" aria-labelledby="geometric-primitive-haskell-tab">
+                        <pre>
+<code class="language-haskell">
+--|'convert2DHomoToInHomo' convert homogeneous 2 coordinate to inhomogeneous
+convert2DHomoToInHomo :: (Real, Real, Real) -> (Real, Real)
+convert2DHomoToInHomo (0, 0, 0) = error "Can not have (0, 0, 0) as argument"
+convert2DHomoToInHomo (_, _, 0) = 
+    error "Can not have an inhomogeneous equivalent for given point"
+convert2DHomoToInHomo (x, y, w) = (x / w, y / w)
+--|'convert2DInHomoToHomo' convert inhomogeneous to homogeneous ones
+convert2DInHomoToHomo :: Real -> (Real, Real) -> (Real, Real, Real)
+convert2DInHomoToHomo 0 (_, _) = error "w has to be bigger than 0"
+convert2DInHomoToHomo w (x, y) = (x * w, y * w, w)
+</code>
+                                                           </pre>
+                    </div>
+                    <div class="tab-pane fade" id="geometric-primitive-python" role="tabpanel" aria-labelledby="geometric-primitive-python-tab">
+                        <pre>
+<code class="language-python">
+def convert2DHomoToInHomo(2d_homo_point):
+    "convert 2d homogeneous coordinate to inhomogeneous coordinate"
+    if 2d_homo_point == (0, 0, 0):
+        raise ValueError("Can not have (0, 0, 0) as argument")
+    x, y, w = 2d_homo_point
+    if w == 0:
+        raise ValueError("Can not have an equivalent inhomogeneous coordinate")
+    return (x / w, y / w)
+
+def convert2DInHomoToHomo(2dpoint, w):
+    "convert 2d inhomogeneous coordinate to homogeneous using w"
+    if w == 0:
+        raise ValueError("Can not have a representation in projection space")
+    x, y = 2dpoint
+    return (x * w, y * w, w)
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="geometric-primitive-cpp" role="tabpanel" aria-labelledby="geometric-primitive-cpp-tab">
+                        <pre>
+<code class="language-cpp">
+struct Point2D {
+    double x;
+    double y;
+};
+struct PointHomo2D {
+    double x;
+    double y;
+    double z;
+};
+Point2D convert2DHomoToInHomo ( PointHomo2D p)
+{
+    /*convert 2d homogeneous coordinate to inhomogeneous coordinate*/
+    double px = p.x;
+    double py = p.y;
+    double pw = p.w;
+    if ( px == 0.0 && py == 0.0 && pw == 0.0) {
+        throw std::invalid_argument("can not have (0, 0, 0) as argument");
+    } else if (pw == 0.0) {
+        throw std::invalid_argument("Can not have an equivalent inhomogeneous coordinate");
+    }
+    Point2D dpoint2;
+    dpoint2.x = px / pw;
+    dpoint2.y = py / pw;
+    return dpoint2;
+}
+PointHomo2D convert2DInHomoToHomo ( double w, Point2D p) 
+{
+    /*convert 2d inhomogeneous coordinate to homogeneous using w*/
+    if (w == 0.0) {
+        throw std::invalid_argument("Can not be represented in projection space");
+    }
+    PointHomo2D point;
+    point.x = p.x * w;
+    point.y = p.y * w;
+    point.w = w;
+    return point;
+}
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="geometric-primitive-nim" role="tabpanel" aria-labelledby="geometric-primitive-nim-tab">
+                        <pre><code class="language-nim">
+Point2D = tuple[x: float, y: float]
+Point2DHomo = tuple[x: float, y: float, w: float]
+proc convert2DHomoToInHomo(p: Point2DHomo): Point2D =
+    ## convert 2d homogeneous coordinate to inhomogeneous coordinate
+    if (p.x == 0.0 and p.y == 0.0 and p.w == 0.0) == true:
+        raise newException(ValueError, "can not have (0, 0, 0) as argument")
+    elif p.w == 0.0:
+        raise newException(ValueError,
+            "point can not be represented as inhomogeneous coordinate"
+            )
+    var point: Point2D
+    point.x = p.x / p.w
+    point.y = p.y / p.w
+    return point
+
+proc convert2DInHomoToHomo(p: Point2D, w: float): Point2DHomo =
+    ## convert 2d inhomogeneous coordinate to homogeneous using w
+    if w == 0.0:
+        raise newException(ValueError,
+            "point can not be represented projection 2d space"
+            )
+    var point: Point2DHomo
+    point.x = p.x * w
+    point.y = p.y * w
+    point.w = w
+    return point
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="geometric-primitive-red" role="tabpanel" aria-labelledby="geometric-primitive-red-tab">
+                        <pre>
+                        <code class="language-red">
+convert2DHomoToInHomo: function [Point2DHomo][
+    ;; convert 2d homogeneous coordinate to inhomogeneous coordinate
+
+    x: pick Point2DHomo 1
+    y: pick Point2DHomo 2
+    w: pick Point2DHomo 3
+    if x == 0 && y == 0 && w == 0 [
+        make error! [
+            type: value Id: value arg1: "can not have (0, 0, 0) as argument" 
+        ]
+
+    ]
+    if w == 0 [
+        make error! [
+            type: value Id: value 
+            arg1: "point can not be represented as inhomogeneous coordinate" 
+        ]
+    ]
+    res1: x / w
+    res2: y / w
+    return [res1 res2]
+]
+convert2DInHomoToHomo: function [Point2D w][
+    ;; convert 2d inhomogeneous coordinate to homogeneous using w
+    if w == 0 [
+        make error! [
+            type: value Id: value 
+            arg1: "point can not be represented as inhomogeneous coordinate" 
+        ]
+    ]
+    x: pick Point2D 1
+    y: pick Point2D 2
+    res1: x * w
+    res2: y * w
+    return [res1 res2 w]
+]
+                        </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="geometric-primitive-references">
+                    <li class="work-ref"><cite></cite></li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+    <div class="container-fluid improc-container">
+        <section class="improc-section" id="3d-2d-projection">
+            <h3>3D - 2D Projections</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="3d-2d-projection-problem-statement" class="lead text-wrap text-monospace" style="width: 50em;">
+                    Human visual system perceives the world in 3 dimensions,
+                    whereas computer screens are 2 dimensional media.
+                    How do we then represent 3d objects in computer screen ?
+                </p>
+            </div>
+            <h4>Description</h4>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                Algorithm description
+            </p>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="3d-2d-projection-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="3d-2d-projection-haskell-tab" data-toggle="tab" href="#3d-2d-projection-haskell" role="tab" aria-controls="3d-2d-projection-haskell" aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="3d-2d-projection-python-tab" data-toggle="tab" href="#3d-2d-projection-python" role="tab" aria-controls="3d-2d-projection-python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="3d-2d-projection-cpp-tab" data-toggle="tab" href="#3d-2d-projection-cpp" role="tab" aria-controls="3d-2d-projection-cpp" aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="3d-2d-projection-nim-tab" data-toggle="tab" href="#3d-2d-projection-nim" role="tab" aria-controls="3d-2d-projection-nim" aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="3d-2d-projection-red-tab" data-toggle="tab" href="#3d-2d-projection-red" role="tab" aria-controls="3d-2d-projection-red" aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="3d-2d-projection-code-content">
+                    <div class="tab-pane fade show active" id="3d-2d-projection-haskell" role="tabpanel" aria-labelledby="3d-2d-projection-haskell-tab">
+                        <pre>
+<code class="language-haskell">
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="3d-2d-projection-python" role="tabpanel" aria-labelledby="3d-2d-projection-python-tab">
+                        <pre>
+<code class="language-python">
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="3d-2d-projection-cpp" role="tabpanel" aria-labelledby="3d-2d-projection-cpp-tab">
+                        <pre>
+<code class="language-cpp">
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="3d-2d-projection-nim" role="tabpanel" aria-labelledby="3d-2d-projection-nim-tab">
+                        <pre>
+<code class="language-nim">
+</code>
+                        </pre>
+                    </div>
+                    <div class="tab-pane fade" id="3d-2d-projection-red" role="tabpanel" aria-labelledby="3d-2d-projection-red-tab">
+                        <pre>
+<code>
+</code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="3d-2d-projection-references">
+                    <li class="work-ref"><cite></cite></li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+    <script src="../theme/js/prism.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</article>
+
+</html>

@@ -1,0 +1,13 @@
+\documentclass[dvisvgm]{minimal}
+\usepackage{tikz}
+\thispagestyle{empty}
+\begin{document}
+    \begin{tikzpicture}
+        \draw[<->] (-5, 0) -- (5,0);
+        \draw[fill] (-2, 0) circle (0.2em) node[above] {x};
+        \draw[fill] (2, 0) circle (0.2em) node[above] {xi};
+        \draw[red, dashed] (-1.9, -0.3) -- (1.9, -0.3);
+        \draw (0, -0.4) node[below,color=red] {\(\Delta\) x};
+    \end{tikzpicture}
+
+\end{document}

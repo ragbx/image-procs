@@ -1,0 +1,17 @@
+\documentclass[dvisvgm]{minimal}
+\usepackage{tikz}
+\thispagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+    \draw (-2, 0) -- (2, 0) node[above] {x};
+    \draw (0, -2) -- (0, 2) node[above] {y};
+    \draw[fill] (0, 0) circle (0.3 em);
+    \node[left] at (-0.3, -0.5) {O};
+    \draw[fill] (1, 1.5) circle (0.2 em) node[right] {P};
+    \draw[dashed, orange] (1,0) -- (1, 1.5); 
+    \node[below] at (1,0) {a};
+    \draw[dashed, blue] (0, 1.5) -- (1, 1.5); 
+    \node[left] at (-0.3, 1.5) {p(a)};
+    \end{tikzpicture}
+
+\end{document}

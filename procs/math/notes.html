@@ -5,7 +5,6 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../theme/css/prism.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
     <title>Math Notes</title>
 </head>
 
@@ -41,15 +40,8 @@
                     \({\Delta}x = |x - x_i|\).
                 </p>
                 <figure>
-                    <script type="text/tikz">
-                        \begin{tikzpicture}
-                        \draw[<->] (-5, 0) -- (5,0);
-                        \draw[fill] (-2, 0) circle (0.2em) node[above] {x};
-                        \draw[fill] (2, 0) circle (0.2em) node[above] {xi};
-                        \draw[red, dashed] (-1.9, -0.3) -- (1.9, -0.3);
-                        \draw (0, -0.4) node[below,color=red] {\(\Delta\) x};
-                    \end{tikzpicture}
-                </script>
+                    <object data="../theme/image/d1point.svg" type="image/svg+xml">
+                    </object>
                     <figcaption>1 Dimensional Point Distance</figcaption>
                 </figure>
             </div>
@@ -66,7 +58,7 @@
                         \(y = \{y_j | y_j \in \mathbb{R} \}\) where \( i, j
                         \in \mathbb{N}\). The projection
                         of P onto x is the number a, whereas the projection of
-                        P onto y is the number b. The projection \(\phi:
+                        P onto y is the number b. The projection \(p:
                         \mathbb{R} \to \mathbb{R} \) for
                         any \(a_i, b_i \in \mathbb{R}\) is:
                         <dl>
@@ -94,19 +86,9 @@
                         component of point as a function of the other one.
                     </p>
                     <figure>
-                        <script type="text/tikz">
-                            \begin{tikzpicture}
-                                \draw (-2, 0) -- (2, 0) node[above] {x};
-                                \draw (0, -2) -- (0, 2) node[above] {y};
-                                \draw[fill] (0, 0) circle (0.3 em);
-                                \node[left] at (-0.3, -0.5) {O};
-                                \draw[fill] (1, 1.5) circle (0.2 em) node[right] {P};
-                                \draw[dashed, orange] (1,0) -- (1, 1.5); 
-                                \node[below] at (1,0) {a};
-                                \draw[dashed, blue] (0, 1.5) -- (1, 1.5); 
-                                \node[left] at (-0.3, 1.5) {\(\phi (a)\)};
-                                \end{tikzpicture}
-                        </script>
+                        <object data="../theme/image/d2point.svg" type="image/svg+xml">
+                        </object>
+
                         <figcaption>
                             2 Dimensional Point on Cartesian Coordinate System
                         </figcaption>
@@ -115,10 +97,10 @@
                 <section class="container-fluid">
                     <h6>Polar Coordinates</h6>
                     <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                    Given a circle whose center is at O and a horizontal line
-                    that passes through the center a point, in 2 dimensional
-                    euclidean plane can also be expressed with the point's
-                    distance and the angle to the center of the circle.
+                        Given a circle whose center is at O and a horizontal line
+                        that passes through the center a point, in 2 dimensional
+                        euclidean plane can also be expressed with the point's
+                        distance and the angle to the center of the circle.
                     </p>
                     <figure></figure>
                 </section>
@@ -218,7 +200,6 @@ dist1D: function [p1 p2] [
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script src="http://tikzjax.com/v1/tikzjax.js"></script>
 </article>
 
 </html>

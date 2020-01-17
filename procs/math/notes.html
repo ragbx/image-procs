@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="../theme/css/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+    <title>Math Notes</title>
+</head>
+
+<article>
+    <h1>Math Notes</h1>
+    <section class="toc" id="processing-toc">
+        <ul>
+            <li><a href="#coordinates">Coordinates</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </section>
+    <div class="container-fluid improc-container">
+        <section class="improc-section container-fluid" id="coordinates">
+            <h3 class="improc-section-title">Coordinates</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="coordinates-problem-statement" class="lead text-wrap text-monospace" style="width: 50em;">
+                    How do you designate the location of something ?
+                </p>
+            </div>
+            <h4>Description</h4>
+            <div id="1d-coord" class="container-fluid">
+                <h5>Coordinates in 1 Dimensional Space</h5>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                    When we would like to refer to the location of a point in
+                    \(\mathbb{R}\) line, we can simply use its relation to other
+                    numbers on the line, if \(x_i &#60; x\) then the x is on the
+                    right of \(x_i\), if \(x_i &#62; x\) then the x is on the left
+                    of \(x_i\). The distance between x and \(x_i\) is simply
+                    \({\Delta}x = |x - x_i|\).
+                </p>
+                <figure>
+                    <script type="text/tikz">
+                        \begin{tikzpicture}
+                        \draw[<->] (-5, 0) -- (5,0);
+                        \draw[fill] (-2, 0) circle (0.2em) node[above] {x};
+                        \draw[fill] (2, 0) circle (0.2em) node[above] {xi};
+                        \draw[red, dashed] (-1.9, -0.3) -- (1.9, -0.3);
+                        \draw (0, -0.4) node[below,color=red] {\(\Delta\) x};
+                    \end{tikzpicture}
+                </script>
+                    <figcaption>1 Dimensional Point Distance</figcaption>
+                </figure>
+            </div>
+            <div id="2d-coord" class="container-fluid">
+                <h5>Coordinates in 2 Dimensional Space</h5>
+                <section class="container-fluid">
+                    <h6>Cartesian Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        A point P in \(\mathbb{R}^2\) is expressed with two
+                        real numbers as \(P = (a, b)\). Now let us draw a
+                        horizontal line, x and a vertical line, y, which
+                        intersect at a point O with
+                        \(x = \{ x_i | x_i \in \mathbb{R} \} \) and
+                        \(y = \{y_j | y_j \in \mathbb{R} \}\) where \( i, j
+                        \in \mathbb{N}\). The projection
+                        of P onto x is the number a, whereas the projection of
+                        P onto y is the number b. The projection \(\phi:
+                        \mathbb{R} \to \mathbb{R} \) for
+                        any \(a_i, b_i \in \mathbb{R}\) is:
+                        <dl>
+                            <div>
+                                <dt>injective</dt>
+                                <dd>that is for all pairs that are in its domain
+                                    there exist a single value in its codomain
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>surjective</dt>
+                                <dd>that is all values in its codomain has a
+                                    correspondant in its domain.
+                                </dd>
+                            </div>
+                        </dl>
+                    </p>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        The collection of all pairs that join the domain and
+                        the codomain of such projection constitutes the 2
+                        dimensional euclidean plane and the representation
+                        that we use is known as cartesian coordinate system.
+                        The main advantage of using cartesian coordinate
+                        system is that it permit us to refer to a
+                        component of point as a function of the other one.
+                    </p>
+                    <figure>
+                        <script type="text/tikz">
+                            \begin{tikzpicture}
+                                \draw (-2, 0) -- (2, 0) node[above] {x};
+                                \draw (0, -2) -- (0, 2) node[above] {y};
+                                \draw[fill] (0, 0) circle (0.3 em);
+                                \node[left] at (-0.3, -0.5) {O};
+                                \draw[fill] (1, 1.5) circle (0.2 em) node[right] {P};
+                                \draw[dashed, orange] (1,0) -- (1, 1.5); 
+                                \node[below] at (1,0) {a};
+                                \draw[dashed, blue] (0, 1.5) -- (1, 1.5); 
+                                \node[left] at (-0.3, 1.5) {\(\phi (a)\)};
+                                \end{tikzpicture}
+                        </script>
+                        <figcaption>
+                            2 Dimensional Point on Cartesian Coordinate System
+                        </figcaption>
+                    </figure>
+                </section>
+                <section class="container-fluid">
+                    <h6>Polar Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                    Given a circle whose center is at O and a horizontal line
+                    that passes through the center a point, in 2 dimensional
+                    euclidean plane can also be expressed with the point's
+                    distance and the angle to the center of the circle.
+                    </p>
+                    <figure></figure>
+                </section>
+            </div>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="coordinates-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="coordinates-haskell-tab" data-toggle="tab" href="#coordinates-haskell" role="tab" aria-controls="coordinates-haskell" aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-python-tab" data-toggle="tab" href="#coordinates-python" role="tab" aria-controls="coordinates-python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-cpp-tab" data-toggle="tab" href="#coordinates-cpp" role="tab" aria-controls="coordinates-cpp" aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-nim-tab" data-toggle="tab" href="#coordinates-nim" role="tab" aria-controls="coordinates-nim" aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-red-tab" data-toggle="tab" href="#coordinates-red" role="tab" aria-controls="coordinates-red" aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="coordinates-code-content">
+                    <div class="tab-pane fade show active" id="coordinates-haskell" role="tabpanel" aria-labelledby="coordinates-haskell-tab">
+                        <pre>
+<code class="language-haskell">
+--|'dist1d' 1 dimensional coordinate distance
+dist1D :: Real -> Real -> Real
+dist1D p1 p2 = if (p1 - p2) > 0 then (p1 - p2) else -(p1 - p2)
+</code>
+                                                           </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-python" role="tabpanel" aria-labelledby="coordinates-python-tab">
+                        <pre>
+<code class="language-python">
+def dist1D(p1, p2):
+    "distance 1 dimensional point"
+    return abs(p1 - p2)
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-cpp" role="tabpanel" aria-labelledby="coordinates-cpp-tab">
+                        <pre>
+<code class="language-cpp">
+#include <cmath>        // std::abs
+double dist1D(double p1, double p2) 
+{
+    double diff = p1 - p2;
+    return std::abs(diff);
+}
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-nim" role="tabpanel" aria-labelledby="coordinates-nim-tab">
+                        <pre>
+<code class="language-nim">
+import system
+proc dist1D(p1: float, p2: float): float =
+    ## distance 1 dimensional
+    return abs(p1 - p2)
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-red" role="tabpanel" aria-labelledby="coordinates-red-tab">
+                        <pre>
+<code>
+dist1D: function [p1 p2] [
+    ;; distance 1 dimensional points
+    diff: p1 - p2
+    res1: absolute diff
+    return res1
+]
+</code>
+                                               </pre>
+                    </div>
+                </div>
+            </div>
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="coordinates-references">
+                    <li class="work-ref">
+                        <cite>Nitecki, Zbigniew. Calculus in 3D: Geometry, Vectors, and Multivariate Calculus, 2018.
+                        </cite>
+                    </li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../theme/js/prism.js">
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+</article>
+
+</html>

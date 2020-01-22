@@ -199,12 +199,232 @@ dist1D: function [p1 p2] [
             <div class="improc-summary container-fluid">
                 <h4>Problem Statement</h4>
                 <p id="operations-problem-statement" class="lead text-wrap text-monospace" style="width: 50;">
+                    What are necessary operations that one needs to know in
+                    pre-calculus in order to compute values ?
                 </p>
             </div>
-            <h4>Description</h4>
+            <h4>Operator List</h4>
             <p class="improc-description text-monospace text-wrap" style="width: 62;">
-                Algorithm description
+                Addition:
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd>Mostly used with infix operator \(+\). When two or more disjoint sets
+                            combined the number of elements in the resulting set are represented with
+                            addition.</dd>
+                    </div>
+                    <div>
+                        <dt>Commutative</dt>
+                        <dd>a + b = b + a, meaning order of elements does not change result
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Associative</dt>
+                        <dd>a + (b + c) = (a + b) + c meaning the precedence of operations
+                            does not change the final result
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Identity Element</dt>
+                        <dd>a + 0 = a, meaning that 0 is a number which does not
+                            change the identity of the element.</dd>
+                    </div>
+                    <div>
+                        <dt>Units</dt>
+                        <dd>in the operation a + b we assume that a and b have the same units, for
+                            example 4m + 5m = 9m but 4m + \(5m^2\) is not possible.
+                        </dd>
+                    </div>
+                </dl>
             </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Subtraction:
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd>It is usually designated with the infix operator
+                            \(-\).
+                            It represents going back some steps in the number line.</dd>
+                    </div>
+                    <div>
+                        <dt>Anticommutative</dt>
+                        <dd>a - b = - ( b - a) the result is the negative of the original
+                            result
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Non Associative</dt>
+                        <dd>
+                            \(a - (b - c) \not = (a - b) - c\) the precedence of operations
+                            contributes to the result
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Multiplication:
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd>
+                            Usually designated by the infix operator \(\times\) or
+                            \(\cdot\). It can be thought of as a repeated addition.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Commutative</dt>
+                        <dd>a × b = b × a
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Associative</dt>
+                        <dd>
+                            a × (b × c) = (a × b) × c
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Distributive</dt>
+                        <dd>a × (b + c) = a × b + a × c
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Identity element</dt>
+                        <dd>a × 1 = a
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Absorbing element</dt>
+                        <dd>a × 0 = 0
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Negation</dt>
+                        <dd>-1 × a = -a that is multiplication with -1 results in additive
+                            inverse
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Inverse Element</dt>
+                        <dd> every number except 0 has an multiplicative inverse so that
+                            \(a × 1/a = 1\)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Order preservation</dt>
+                        <dd>
+                            multiplication by positive number conserves order, by a
+                            negative number reverses order:
+                            \(a \times b &#60; a \times c if b &#60; c
+                            -a \times b &#62; -a \times c if b &#60; c
+                            \)
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Division:
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd>Usually designated by the infix operator \(/\), and
+                            \(÷\). It can be considered the process of
+                            calculating how many times a number is contained in
+                            another one.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Distributive</dt>
+                        <dd>(a+b) / c = a/c + b/c
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Exponentiation
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd> It is usually designated with a base and power
+                            part as in \(b^n\) where b
+                            is base and n is power. It represents the repeated multiplication of base like
+                            \(b^n = b \times b \times ... n times ... \times b\)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Identities</dt>
+                        <dd>\(b^{m+n} = b^m \times b^n\)
+                        </dd>
+                        <dd>\(b^{n} \times b = b^{n+1}\)
+                        </dd>
+                        <dd>\(b \times c)^n = b^n \times c^n\)
+                        </dd>
+                        <dd>\(b)^c^n = b^{n \times c}\)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Zero Exponent</dt>
+                        <dd>\(b^0 = 1\)
+                        </dd>
+                        <dd>\(b^{n} \times b = b^{n+1}
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Negative Exponent</dt>
+                        <dd>\(b^{-n} = 1/b^{-n}\)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Positive Rational Exponent</dt>
+                        <dd>\(b^{m/n} = b^{1/n}^m = \sqrt[n]{b^m} = \sqrt[n]{b}^m \)
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Logarithm:
+                <dl>
+                    <div>
+                        <dt>Description</dt>
+                        <dd> Logarithm is the inverse of exponential function.
+                            For \(b^y = x, \log_b(x) = y\), basically I have the
+                            base and the resulting value I try to find the power.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Product</dt>
+                        <dd>\(\log_b(a × c) = \log_b(a) + \log_b(c)
+                            \)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Division</dt>
+                        <dd>\(\log_b(x / y ) = \log_b(x) - \log_b(y)
+                            \)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Exponent</dt>
+                        <dd>\( \log_b(x^p) = p \log_b(x)
+                            \)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Root</dt>
+                        <dd>\( \log_b(\sqrt[p]{x}) = \log_b(x) / p
+                            \)
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Change of Base</dt>
+                        <dd>\( \log_b(x) = \log_k(x) / \log_k(b) \)
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+
+
+
+
             <h4>Code snippets</h4>
             <div class="code-container">
                 <ul class="nav nav-tabs" id="operations-code-tab" role="tablist">
@@ -630,83 +850,59 @@ dist1D: function [p1 p2] [
             <h3>Elements of Probability Theory</h3>
             <div class="improc-summary container-fluid">
                 <h4>Problem Statement</h4>
-                <p id="probability-notions-problem-statement" 
-                   class="lead text-wrap text-monospace"
-                   style="width: 50;">
+                <p id="probability-notions-problem-statement" class="lead text-wrap text-monospace" style="width: 50;">
                 </p>
             </div>
             <h4>Description</h4>
-            <p class="improc-description text-monospace text-wrap"
-               style="width: 62;">
-            Algorithm description
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Algorithm description
             </p>
             <h4>Code snippets</h4>
             <div class="code-container">
                 <ul class="nav nav-tabs" id="probability-notions-code-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="probability-notions-haskell-tab" 
-                                                   data-toggle="tab" 
-                                                   href="#probability-notions-haskell" 
-                                                   role="tab" aria-controls="probability-notions-haskell"
-                                                              aria-selected="true">Haskell</a>
+                        <a class="nav-link active" id="probability-notions-haskell-tab" data-toggle="tab" href="#probability-notions-haskell" role="tab" aria-controls="probability-notions-haskell" aria-selected="true">Haskell</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="probability-notions-python-tab" data-toggle="tab" 
-                                                                  href="#probability-notions-python" role="tab" 
-                                                                                       aria-controls="probability-notions-python" 
-                                                                                       aria-selected="false">Python</a>
+                        <a class="nav-link" id="probability-notions-python-tab" data-toggle="tab" href="#probability-notions-python" role="tab" aria-controls="probability-notions-python" aria-selected="false">Python</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="probability-notions-cpp-tab" data-toggle="tab" 
-                                                               href="#probability-notions-cpp" role="tab" 
-                                                                                 aria-controls="probability-notions-cpp" 
-                                                                                 aria-selected="false">Cpp</a>
+                        <a class="nav-link" id="probability-notions-cpp-tab" data-toggle="tab" href="#probability-notions-cpp" role="tab" aria-controls="probability-notions-cpp" aria-selected="false">Cpp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="probability-notions-nim-tab" data-toggle="tab" 
-                                                               href="#probability-notions-nim" role="tab" 
-                                                                                 aria-controls="probability-notions-nim" 
-                                                                                 aria-selected="false">Nim</a>
+                        <a class="nav-link" id="probability-notions-nim-tab" data-toggle="tab" href="#probability-notions-nim" role="tab" aria-controls="probability-notions-nim" aria-selected="false">Nim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="probability-notions-red-tab" data-toggle="tab" 
-                                                               href="#probability-notions-red" role="tab" 
-                                                                                 aria-controls="probability-notions-red" 
-                                                                                 aria-selected="false">Red</a>
+                        <a class="nav-link" id="probability-notions-red-tab" data-toggle="tab" href="#probability-notions-red" role="tab" aria-controls="probability-notions-red" aria-selected="false">Red</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="probability-notions-code-content">
-                    <div class="tab-pane fade show active" id="probability-notions-haskell" 
-                                                           role="tabpanel" aria-labelledby="probability-notions-haskell-tab">
-                                                           <pre>
+                    <div class="tab-pane fade show active" id="probability-notions-haskell" role="tabpanel" aria-labelledby="probability-notions-haskell-tab">
+                        <pre>
 <code class="language-haskell">
 </code>
                                                            </pre>
                     </div>
-                    <div class="tab-pane fade" id="probability-notions-python" 
-                                               role="tabpanel" aria-labelledby="probability-notions-python-tab">
-                                               <pre>
+                    <div class="tab-pane fade" id="probability-notions-python" role="tabpanel" aria-labelledby="probability-notions-python-tab">
+                        <pre>
 <code class="language-python">
 </code>
                                                </pre>
                     </div>
-                    <div class="tab-pane fade" id="probability-notions-cpp" 
-                                               role="tabpanel" aria-labelledby="probability-notions-cpp-tab">
-                                               <pre>
+                    <div class="tab-pane fade" id="probability-notions-cpp" role="tabpanel" aria-labelledby="probability-notions-cpp-tab">
+                        <pre>
 <code class="language-cpp">
 </code>
                                                </pre>
                     </div>
-                    <div class="tab-pane fade" id="probability-notions-nim" 
-                                               role="tabpanel" aria-labelledby="probability-notions-nim-tab">
-                                               <pre>
+                    <div class="tab-pane fade" id="probability-notions-nim" role="tabpanel" aria-labelledby="probability-notions-nim-tab">
+                        <pre>
 <code class="language-nim">
 </code>
                                                </pre>
                     </div>
-                    <div class="tab-pane fade" id="probability-notions-red" 
-                                               role="tabpanel" aria-labelledby="probability-notions-red-tab">
-                                               <pre>
+                    <div class="tab-pane fade" id="probability-notions-red" role="tabpanel" aria-labelledby="probability-notions-red-tab">
+                        <pre>
 <code>
 </code>
                                                </pre>

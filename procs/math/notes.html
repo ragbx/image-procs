@@ -91,7 +91,6 @@
                     <figure>
                         <object data="../theme/image/d2point.svg" type="image/svg+xml">
                         </object>
-
                         <figcaption>
                             2 Dimensional Point on Cartesian Coordinate System
                         </figcaption>
@@ -421,10 +420,6 @@ dist1D: function [p1 p2] [
                     </div>
                 </dl>
             </p>
-
-
-
-
             <h4>Code snippets</h4>
             <div class="code-container">
                 <ul class="nav nav-tabs" id="operations-code-tab" role="tablist">
@@ -448,30 +443,83 @@ dist1D: function [p1 p2] [
                     <div class="tab-pane fade show active" id="operations-haskell" role="tabpanel" aria-labelledby="operations-haskell-tab">
                         <pre>
 <code class="language-haskell">
+-- operators
+add :: Real -> Real -> Real
+subtr :: Real -> Real -> Real
+div :: Real -> Real -> Real
+multi :: Real -> Real -> Real
+exponent :: Real -> Real -> Real
+logarithm_a_b :: Float -> Float -> Float
+
+add a b = a + b
+subtr a b = a - b
+mdiv a b = a `div` b
+multi a b = a * b
+exponent base expo = base ** expo
+logarithm_a_b a b = log a b
+
 </code>
                         </pre>
                     </div>
                     <div class="tab-pane fade" id="operations-python" role="tabpanel" aria-labelledby="operations-python-tab">
                         <pre>
 <code class="language-python">
+import math
+def add(a, b): return a + b
+def subtr(a, b): return a - b
+def div(a, b): return a / b
+def multi(a, b): return a * b
+def exponent(base, expo): return base ** expo
+def logarithm(base, value): return math.log(value, base)
 </code>
                         </pre>
                     </div>
                     <div class="tab-pane fade" id="operations-cpp" role="tabpanel" aria-labelledby="operations-cpp-tab">
                         <pre>
 <code class="language-cpp">
+include <math.h>
+double add(double a, double b){return a + b;}
+double subtr(double a, double b){return a - b;}
+double multi(double a, double b){return a * b;}
+double div(double a, double b){return a / b;}
+double exponent(double base, double expo){return pow(base, expo);}
+double log(double base, double value){return log(value)/log(base);}
 </code>
                         </pre>
                     </div>
                     <div class="tab-pane fade" id="operations-nim" role="tabpanel" aria-labelledby="operations-nim-tab">
                         <pre>
 <code class="language-nim">
+import math
+float add(a: float, b: float): float = 
+    return a + b
+float subtr(a: float, b: float): float = 
+    return a - b
+float mdiv(a: float, b: float): float = 
+    return a / b
+float multi(a: float, b: float): float = 
+    return a * b
+float exponent(base: float, expo: float): float = 
+    return pow(base, expo)
+float logarithm(base: float, value: float): float = 
+    return log(value, base)
 </code>
                         </pre>
                     </div>
                     <div class="tab-pane fade" id="operations-red" role="tabpanel" aria-labelledby="operations-red-tab">
                         <pre>
 <code>
+add: function [a b] [ return a + b ]
+subtr: function [a b] [ return a - b ]
+div: function [a b] [ return a / b ]
+multi: function [a b] [ return a * b ]
+exponent: function [base expo] [ return power base expo ]
+logarithm: function [base value] [
+    res1: log-10 value
+    res2: log-10 base
+    return res1 / res2
+]
+
 </code>
                         </pre>
                     </div>

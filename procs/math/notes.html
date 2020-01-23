@@ -580,7 +580,37 @@ logarithm: function [base value] [
                 </object>
                 <figcaption>1 Dimensional Point Distance</figcaption>
             </figure>
-
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+                Here is the million dollar question. How do we know that
+                fractions won't ever reach to 0 ? This is problematic, because
+                the sequence is <mark>monotonic</mark>, that is it steadily
+                decreases, formally a monotonic non increasing sequence has
+                the following structure: \( y_1 > y_2 > y_3 > ... y_n \) and
+                our sequence conforms to this structure. This was also known
+                as the Zenon paradox formulated in a less formal way by the
+                ancient greek philosopher. Modern mathematics had invented the
+                bounded infinite sequences to solve this paradox. But what is
+                a bounded sequence really ?
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62;">
+            Tarasov defines it the following way:
+            <blockquote>
+                A sequence \(y_n\) is bounded if there are two numbers A and
+                B, labelling the range which encloses all the terms of a
+                sequence: \( A \leq y_n \leq B (n \in \{1, 2, 3, 4, ... \} \)
+            </blockquote>
+            If there are no A and B than the sequence is unbounded.
+            <div class="alert alert-info">
+                For the third sequence which labels represent the its bounds
+                given the definition of bounded sequence:
+                <ol>
+                    <li>A = 0, B = 1</li>
+                    <li>A = -100, B = 100</li>
+                </ol>
+                Why ? If you were to choose one of them, which one would you
+                choose ? Why ?
+            </div>
+            </p>
             <h4>Code snippets</h4>
             <div class="code-container">
                 <ul class="nav nav-tabs" id="numerical-sequence-code-tab" role="tablist">
@@ -604,12 +634,21 @@ logarithm: function [base value] [
                     <div class="tab-pane fade show active" id="numerical-sequence-haskell" role="tabpanel" aria-labelledby="numerical-sequence-haskell-tab">
                         <pre>
 <code class="language-haskell">
+-- lazy evaluation in haskell makes it possible to implement infinite
+-- sequences
+myLaw :: a -> a
+mySequenceGenerator :: (a -> a) -> [a] -> [a]
+mySequenceGenerator law sequence = map law sequence
+
 </code>
                                                            </pre>
                     </div>
                     <div class="tab-pane fade" id="numerical-sequence-python" role="tabpanel" aria-labelledby="numerical-sequence-python-tab">
                         <pre>
 <code class="language-python">
+from typing import Generator, Callable
+def mySequenceGenerator(law: Callable, sequence: Generator):
+    return map(law, sequence)
 </code>
                                                </pre>
                     </div>

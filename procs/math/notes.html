@@ -19,6 +19,7 @@
             <li><a href="#limit-notions">Limits</a></li>
             <li><a href="#calculus">Calculus</a></li>
             <li><a href="#solid-geometry-notions">Elements of Solid Geometry</a></li>
+            <li><a href="#projective-geometry-notions">Elements of Projective Geometry</a></li>
             <li><a href="#probability-notions">Elements of Probability Theory</a></li>
         </ul>
     </section>
@@ -42,7 +43,7 @@
                     of \(x_i\). The distance between x and \(x_i\) is simply
                     \({\Delta}x = |x - x_i|\).
                 </p>
-                <figure>
+                <figure id="d1point">
                     <object data="../theme/image/d1point.svg" type="image/svg+xml">
                     </object>
                     <figcaption>1 Dimensional Point Distance</figcaption>
@@ -50,7 +51,7 @@
             </div>
             <div id="2d-coord" class="container-fluid">
                 <h5>Coordinates in 2 Dimensional Space</h5>
-                <section class="container-fluid">
+                <section id="cartesian-coords" class="container-fluid">
                     <h6>Cartesian Coordinates</h6>
                     <p class="improc-description text-monospace text-wrap" style="width: 62em;">
                         A point P in \(\mathbb{R}^2\) is expressed with two
@@ -78,25 +79,46 @@
                                 </dd>
                             </div>
                         </dl>
+                        We can think of the projection \(p\) as a function of
+                        the following sort:
+                        \(p(k_i) = \cases{
+                        x & if y = k_i \\
+                        y & if x = k_i
+                        } \\
+                        \text{where} k_i \in P = \{x, y\}
+                        \)
                     </p>
                     <p class="improc-description text-monospace text-wrap" style="width: 62em;">
                         The collection of all pairs that join the domain and
-                        the codomain of such projection constitutes the 2
+                        the codomain of such projections constitutes the 2
                         dimensional euclidean plane and the representation
                         that we use is known as cartesian coordinate system.
-                        The main advantage of using cartesian coordinate
-                        system is that it permit us to refer to a
-                        component of point as a function of the other one.
                     </p>
-                    <figure>
+                    <figure id="d2point">
                         <object data="../theme/image/d2point.svg" type="image/svg+xml">
                         </object>
                         <figcaption>
                             2 Dimensional Point on Cartesian Coordinate System
                         </figcaption>
                     </figure>
-                </section>
-                <section class="container-fluid">
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        An advantage of using cartesian coordinate system is
+                        apparent in the computation of distances between points
+                        using Pythagoras theorem. The distance between two
+                        points is calculated using: \( p1 = \{x1, y1\}, p2 =
+                        \{x2, y2\} \hspace{1em}
+                        \text{then} \hspace{1em} \Delta (p1, p2) =
+                        \sqrt{(x1-x2)^2 + (y1 - y2)^2} \)
+                    </p>
+                    <figure id="pisagor2d">
+                        <figcaption>Distance of 2 Points on Cartesian
+                            Coordinate System
+                        </figcaption>
+                        <object data="../theme/image/pisagor2d.svg" type="image/svg+xml">
+                        </object>
+                    </figure>
+                </section> <!-- cartesian coordinates end -->
+                <section id="polar-coords" class="container-fluid">
                     <h6>Polar Coordinates</h6>
                     <p class="improc-description text-monospace text-wrap" style="width: 62em;">
                         Given a circle whose center is at O and a horizontal line
@@ -104,8 +126,51 @@
                         euclidean plane can also be expressed with the point's
                         distance and the angle to the center of the circle.
                     </p>
-                    <figure></figure>
-                </section>
+                    <figure id="polar-point">
+                        <figcaption>Point with Polar Coordinates
+                        </figcaption>
+                        <object data="../theme/image/polarPoint.svg" type="image/svg+xml">
+                        </object>
+                    </figure>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        The distance between two points in polar coordinates are
+                        computed in the following way: \(p1 = \{r, \theta\},
+                        p2 = \{k, {\beta}\} \hspace{1em}
+                        \Delta (p1, p2) = \sqrt{(\frac{r}{\cos(\theta)} -
+                        \frac{k}{\cos(\beta)})^2 + (\frac{r}{\sin(\theta)} -
+                        \frac{k}{\sin(\beta)})^2} \)
+                    </p>
+                </section> <!-- polar coordinates end -->
+            </div> <!-- 2d coordinates end -->
+            <div id="3d-coord" class="container-fluid">
+                <h5>Coordinates in 3 Dimensional Space</h5>
+                <section id="xyz-coords" class="container-fluid">
+                    <h6>Cartesian Coordinates in 3D space</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        Cartesian coordinates in \(\mathbb{R}^3\) do not
+                        differ in nature from their \(\mathbb{R}^2\) equivalents.
+                        Even the distance is calculated using the same
+                        approach in \(\mathbb{R}^2\), that is:
+                        \( p1 = \{x_1, y_1, z_1\} p2 = \{x_2, y_2, z_2\}
+                        \hspace{1em} \Delta(p1, p2) = \sqrt{
+                        (x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2
+                        } \)
+                    </p>
+                    <figure id="xyz-point">
+                        <figcaption>Two Points in 3D Cartesian Coordinate
+                            System</figcaption>
+                        <object id="xyz-point-obj" data="../theme/image/xyzPoint.svg" type="image/svg+xml">
+                        </object>
+                        <p>Source: <a href="https://commons.wikimedia.org/wiki/File:Coord_XYZ.svg" title="via Wikimedia Commons">Andeggs</a> [Public domain]</p>
+                    </figure>
+                </section> <!-- xyz-coords end -->
+                <section id="cylinderical-coords" class="container-fluid">
+                    <h6>Cylinderical Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        Cylinderical coordinates are a midway between polar
+                        coordinates and 3d cartesian coordinates.
+                    </p>
+                </section> <!-- cylinderical-coords end -->
             </div>
             <h4>Code snippets</h4>
             <div class="code-container">
@@ -346,7 +411,7 @@ dist1D: function [p1 p2] [
                         <dd> It is usually designated with a base and power
                             part as in \(b^n\) where b
                             is base and n is power. It represents the repeated multiplication of base like
-                            \(b^n = b \times b \times ... n times ... \times b\)
+                            \(b^n = b \times b \times ... \text{n times\} ... \times b\)
                         </dd>
                     </div>
                     <div>
@@ -970,6 +1035,102 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
             <footer class="container-fluid">
                 <h4>References</h4>
                 <ul id="solid-geometry-notions-references">
+                    <li class="work-ref"><cite></cite></li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+    <div class="container-fluid improc-container">
+        <section class="improc-section" id="projective-geometry-notions">
+            <h3>Elements of Projective Geometry</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="projective-geometry-notions-problem-statement" 
+                class="lead text-wrap text-monospace"
+                style="width: 50em;">
+                </p>
+            </div>
+            <h4>Description</h4>
+            <p class="improc-description text-monospace text-wrap"
+               style="width: 62em;">
+            Algorithm description
+            </p>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="projective-geometry-notions-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="projective-geometry-notions-haskell-tab" 
+                                                   data-toggle="tab" 
+                                                   href="#projective-geometry-notions-haskell" 
+                                                   role="tab" aria-controls="projective-geometry-notions-haskell"
+                                                              aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="projective-geometry-notions-python-tab" data-toggle="tab" 
+                                                                  href="#projective-geometry-notions-python" role="tab" 
+                                                                                       aria-controls="projective-geometry-notions-python" 
+                                                                                       aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="projective-geometry-notions-cpp-tab" data-toggle="tab" 
+                                                               href="#projective-geometry-notions-cpp" role="tab" 
+                                                                                 aria-controls="projective-geometry-notions-cpp" 
+                                                                                 aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="projective-geometry-notions-nim-tab" data-toggle="tab" 
+                                                               href="#projective-geometry-notions-nim" role="tab" 
+                                                                                 aria-controls="projective-geometry-notions-nim" 
+                                                                                 aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="projective-geometry-notions-red-tab" data-toggle="tab" 
+                                                               href="#projective-geometry-notions-red" role="tab" 
+                                                                                 aria-controls="projective-geometry-notions-red" 
+                                                                                 aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="projective-geometry-notions-code-content">
+                    <div class="tab-pane fade show active" id="projective-geometry-notions-haskell" 
+                                                           role="tabpanel" aria-labelledby="projective-geometry-notions-haskell-tab">
+                                                           <pre>
+<code class="language-haskell">
+</code>
+                                                           </pre>
+                    </div>
+                    <div class="tab-pane fade" id="projective-geometry-notions-python" 
+                                               role="tabpanel" aria-labelledby="projective-geometry-notions-python-tab">
+                                               <pre>
+<code class="language-python">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="projective-geometry-notions-cpp" 
+                                               role="tabpanel" aria-labelledby="projective-geometry-notions-cpp-tab">
+                                               <pre>
+<code class="language-cpp">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="projective-geometry-notions-nim" 
+                                               role="tabpanel" aria-labelledby="projective-geometry-notions-nim-tab">
+                                               <pre>
+<code class="language-nim">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="projective-geometry-notions-red" 
+                                               role="tabpanel" aria-labelledby="projective-geometry-notions-red-tab">
+                                               <pre>
+<code>
+</code>
+                                               </pre>
+                    </div>
+                </div>
+            </div>
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="projective-geometry-notions-references">
                     <li class="work-ref"><cite></cite></li>
                 </ul>
             </footer>

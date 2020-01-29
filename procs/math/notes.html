@@ -12,8 +12,9 @@
     <h1>Math Notes</h1>
     <section class="toc" id="processing-toc">
         <ul>
-            <li><a href="#coordinates">Coordinates</a></li>
             <li><a href="#operations">Elementary Operations</a></li>
+            <li><a href="#trigonometry-notions">Elementary Trigonometry</a></li>
+            <li><a href="#coordinates">Coordinates</a></li>
             <li><a href="#numerical-sequence">Infinite Numerical Sequence</a></li>
             <li><a href="#plane-geometry-notions">Elements of Plane Geometry</a></li>
             <li><a href="#limit-notions">Limits</a></li>
@@ -23,240 +24,6 @@
             <li><a href="#probability-notions">Elements of Probability Theory</a></li>
         </ul>
     </section>
-    <div class="container-fluid improc-container">
-        <section class="improc-section container-fluid" id="coordinates">
-            <h3 class="improc-section-title">Coordinates</h3>
-            <div class="improc-summary container-fluid">
-                <h4>Problem Statement</h4>
-                <p id="coordinates-problem-statement" class="lead text-wrap text-monospace" style="width: 50em;">
-                    How do you designate the location of something ?
-                </p>
-            </div>
-            <h4>Description</h4>
-            <div id="1d-coord" class="container-fluid">
-                <h5>Coordinates in 1 Dimensional Space</h5>
-                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                    When we would like to refer to the location of a point in
-                    \(\mathbb{R}\) line, we can simply use its relation to other
-                    numbers on the line, if \(x_i &#60; x\) then the x is on the
-                    right of \(x_i\), if \(x_i &#62; x\) then the x is on the left
-                    of \(x_i\). The distance between x and \(x_i\) is simply
-                    \({\Delta}x = |x - x_i|\).
-                </p>
-                <figure id="d1point">
-                    <object data="../theme/image/d1point.svg" type="image/svg+xml">
-                    </object>
-                    <figcaption>1 Dimensional Point Distance</figcaption>
-                </figure>
-            </div>
-            <div id="2d-coord" class="container-fluid">
-                <h5>Coordinates in 2 Dimensional Space</h5>
-                <section id="cartesian-coords" class="container-fluid">
-                    <h6>Cartesian Coordinates</h6>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        A point P in \(\mathbb{R}^2\) is expressed with two
-                        real numbers as \(P = (a, b)\). Now let us draw a
-                        horizontal line, x and a vertical line, y, which
-                        intersect at a point O with
-                        \(x = \{ x_i | x_i \in \mathbb{R} \} \) and
-                        \(y = \{y_j | y_j \in \mathbb{R} \}\) where \( i, j
-                        \in \mathbb{N}\). The projection
-                        of P onto x is the number a, whereas the projection of
-                        P onto y is the number b. The projection \(p:
-                        \mathbb{R} \to \mathbb{R} \) for
-                        any \(a_i, b_i \in \mathbb{R}\) is:
-                        <dl>
-                            <div>
-                                <dt>injective</dt>
-                                <dd>that is for all pairs that are in its domain
-                                    there exist a single value in its codomain
-                                </dd>
-                            </div>
-                            <div>
-                                <dt>surjective</dt>
-                                <dd>that is all values in its codomain has a
-                                    correspondant in its domain.
-                                </dd>
-                            </div>
-                        </dl>
-                        We can think of the projection \(p\) as a function of
-                        the following sort:
-                        \(p(k_i) = \cases{
-                        x & if y = k_i \\
-                        y & if x = k_i
-                        } \\
-                        \text{where} k_i \in P = \{x, y\}
-                        \)
-                    </p>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        The collection of all pairs that join the domain and
-                        the codomain of such projections constitutes the 2
-                        dimensional euclidean plane and the representation
-                        that we use is known as cartesian coordinate system.
-                    </p>
-                    <figure id="d2point">
-                        <object data="../theme/image/d2point.svg" type="image/svg+xml">
-                        </object>
-                        <figcaption>
-                            2 Dimensional Point on Cartesian Coordinate System
-                        </figcaption>
-                    </figure>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        An advantage of using cartesian coordinate system is
-                        apparent in the computation of distances between points
-                        using Pythagoras theorem. The distance between two
-                        points is calculated using: \( p1 = \{x1, y1\}, p2 =
-                        \{x2, y2\} \hspace{1em}
-                        \text{then} \hspace{1em} \Delta (p1, p2) =
-                        \sqrt{(x1-x2)^2 + (y1 - y2)^2} \)
-                    </p>
-                    <figure id="pisagor2d">
-                        <figcaption>Distance of 2 Points on Cartesian
-                            Coordinate System
-                        </figcaption>
-                        <object data="../theme/image/pisagor2d.svg" type="image/svg+xml">
-                        </object>
-                    </figure>
-                </section> <!-- cartesian coordinates end -->
-                <section id="polar-coords" class="container-fluid">
-                    <h6>Polar Coordinates</h6>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        Given a circle whose center is at O and a horizontal line
-                        that passes through the center a point, in 2 dimensional
-                        euclidean plane can also be expressed with the point's
-                        distance and the angle to the center of the circle.
-                    </p>
-                    <figure id="polar-point">
-                        <figcaption>Point with Polar Coordinates
-                        </figcaption>
-                        <object data="../theme/image/polarPoint.svg" type="image/svg+xml">
-                        </object>
-                    </figure>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        The distance between two points in polar coordinates are
-                        computed in the following way: \(p1 = \{r, \theta\},
-                        p2 = \{k, {\beta}\} \hspace{1em}
-                        \Delta (p1, p2) = \sqrt{(\frac{r}{\cos(\theta)} -
-                        \frac{k}{\cos(\beta)})^2 + (\frac{r}{\sin(\theta)} -
-                        \frac{k}{\sin(\beta)})^2} \)
-                    </p>
-                </section> <!-- polar coordinates end -->
-            </div> <!-- 2d coordinates end -->
-            <div id="3d-coord" class="container-fluid">
-                <h5>Coordinates in 3 Dimensional Space</h5>
-                <section id="xyz-coords" class="container-fluid">
-                    <h6>Cartesian Coordinates in 3D space</h6>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        Cartesian coordinates in \(\mathbb{R}^3\) do not
-                        differ in nature from their \(\mathbb{R}^2\) equivalents.
-                        Even the distance is calculated using the same
-                        approach in \(\mathbb{R}^2\), that is:
-                        \( p1 = \{x_1, y_1, z_1\} p2 = \{x_2, y_2, z_2\}
-                        \hspace{1em} \Delta(p1, p2) = \sqrt{
-                        (x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2
-                        } \)
-                    </p>
-                    <figure id="xyz-point">
-                        <figcaption>Two Points in 3D Cartesian Coordinate
-                            System</figcaption>
-                        <object id="xyz-point-obj" data="../theme/image/xyzPoint.svg" type="image/svg+xml">
-                        </object>
-                        <p>Source: <a href="https://commons.wikimedia.org/wiki/File:Coord_XYZ.svg" title="via Wikimedia Commons">Andeggs</a> [Public domain]</p>
-                    </figure>
-                </section> <!-- xyz-coords end -->
-                <section id="cylinderical-coords" class="container-fluid">
-                    <h6>Cylinderical Coordinates</h6>
-                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
-                        Cylinderical coordinates are a midway between polar
-                        coordinates and 3d cartesian coordinates.
-                    </p>
-                </section> <!-- cylinderical-coords end -->
-            </div>
-            <h4>Code snippets</h4>
-            <div class="code-container">
-                <ul class="nav nav-tabs" id="coordinates-code-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="coordinates-haskell-tab" data-toggle="tab" href="#coordinates-haskell" role="tab" aria-controls="coordinates-haskell" aria-selected="true">Haskell</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="coordinates-python-tab" data-toggle="tab" href="#coordinates-python" role="tab" aria-controls="coordinates-python" aria-selected="false">Python</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="coordinates-cpp-tab" data-toggle="tab" href="#coordinates-cpp" role="tab" aria-controls="coordinates-cpp" aria-selected="false">Cpp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="coordinates-nim-tab" data-toggle="tab" href="#coordinates-nim" role="tab" aria-controls="coordinates-nim" aria-selected="false">Nim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="coordinates-red-tab" data-toggle="tab" href="#coordinates-red" role="tab" aria-controls="coordinates-red" aria-selected="false">Red</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="coordinates-code-content">
-                    <div class="tab-pane fade show active" id="coordinates-haskell" role="tabpanel" aria-labelledby="coordinates-haskell-tab">
-                        <pre>
-<code class="language-haskell">
---|'dist1d' 1 dimensional coordinate distance
-dist1D :: Real -> Real -> Real
-dist1D p1 p2 = if (p1 - p2) > 0 then (p1 - p2) else -(p1 - p2)
-</code>
-                                                           </pre>
-                    </div>
-                    <div class="tab-pane fade" id="coordinates-python" role="tabpanel" aria-labelledby="coordinates-python-tab">
-                        <pre>
-<code class="language-python">
-def dist1D(p1, p2):
-    "distance 1 dimensional point"
-    return abs(p1 - p2)
-</code>
-                                               </pre>
-                    </div>
-                    <div class="tab-pane fade" id="coordinates-cpp" role="tabpanel" aria-labelledby="coordinates-cpp-tab">
-                        <pre>
-<code class="language-cpp">
-#include <cmath>        // std::abs
-double dist1D(double p1, double p2) 
-{
-    double diff = p1 - p2;
-    return std::abs(diff);
-}
-</code>
-                                               </pre>
-                    </div>
-                    <div class="tab-pane fade" id="coordinates-nim" role="tabpanel" aria-labelledby="coordinates-nim-tab">
-                        <pre>
-<code class="language-nim">
-import system
-proc dist1D(p1: float, p2: float): float =
-    ## distance 1 dimensional
-    return abs(p1 - p2)
-</code>
-                                               </pre>
-                    </div>
-                    <div class="tab-pane fade" id="coordinates-red" role="tabpanel" aria-labelledby="coordinates-red-tab">
-                        <pre>
-<code>
-dist1D: function [p1 p2] [
-    ;; distance 1 dimensional points
-    diff: p1 - p2
-    res1: absolute diff
-    return res1
-]
-</code>
-                                               </pre>
-                    </div>
-                </div>
-            </div>
-            <footer class="container-fluid">
-                <h4>References</h4>
-                <ul id="coordinates-references">
-                    <li class="work-ref">
-                        <cite>Nitecki, Zbigniew. Calculus in 3D: Geometry, Vectors, and Multivariate Calculus, 2018.
-                        </cite>
-                    </li>
-                </ul>
-            </footer>
-        </section>
-    </div>
     <div class="container-fluid improc-container">
         <section class="improc-section" id="operations">
             <h3>Elementary Operations</h3>
@@ -377,9 +144,11 @@ dist1D: function [p1 p2] [
                         <dt>Order preservation</dt>
                         <dd>
                             multiplication by positive number conserves order, by a
-                            negative number reverses order:
-                            \(a \times b &#60; a \times c if b &#60; c
-                            -a \times b &#62; -a \times c if b &#60; c
+                            negative number reverses order:<br />
+                            \(a \times b &#60; a \times c \hspace{1em}
+                            \text{if} \hspace{1em} b &#60; c \hspace{2em}
+                            -a \times b &#62; -a \times c \hspace{1em}
+                            \text{if} \hspace{1em} b &#60; c
                             \)
                         </dd>
                     </div>
@@ -598,6 +367,526 @@ logarithm: function [base value] [
         </section>
     </div>
     <div class="container-fluid improc-container">
+        <section class="improc-section" id="trigonometry-notions">
+            <h3>Elements of Trigonometry</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="trigonometry-notions-problem-statement" 
+                class="lead text-wrap text-monospace"
+                style="width: 50em;">
+                What is the relationship between the sides of a shape and the
+                angle they are making ?
+                </p>
+            </div>
+            <h4>Description</h4>
+            <p class="improc-description text-monospace text-wrap"
+            style="width: 62em;">
+                Trigonometry is essential for studying most of the basic shapes in
+                geometry. We are going to see some basic relations on triangle.
+                Not only because triangles are interesting per se, but also the
+                relations that are best defined on triangles come up quite often
+                in other context like sine functions in signal processing.
+            </p>
+            <section id="sinus-trigonometry" class="container-fluid">
+                <h5>Basic Relations on Triangle</h5>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                    All relations are defined on using right angle, the most basic
+                    unit of measure in trigonometry. Here are special
+                    relations defined on right triangle:
+                    <dl>
+                        <div>
+                            <dt>Sinus</dt>
+                            <dd>
+                            is defined as the ratio of the opposite side of the angle to the hypotenuse.
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Cosinus</dt>
+                            <dd>
+                            is defined as the ratio of the adjacent side of the angle to the hypotenuse.
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Tangent</dt>
+                            <dd>
+                            is defined as the ratio of the opposite side of the angle to the adjacent.
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Cotangent</dt>
+                            <dd>
+                            is defined as the ratio of the adjacent side of
+                            the angle to the opposite.
+                            </dd>
+                        </div>
+
+                    </dl>
+                </p>
+                <figure id="trig-triangle">
+                    <figcaption>
+                        \(sin\), \(cos\), \(tan\) on Triangle
+                    </figcaption>
+                    <object id="trig-triangle-obj" width="25%"
+                        data="../theme/image/math/trig.svg" type="image/svg+xml">
+                    </object>
+                </figure>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                The relations of these relations to each other are the
+                following:
+                <ul>
+                    <li>
+                        \(\cos(\theta)^2 + \sin(\theta)^2 = 1\)
+                    </li>
+                    <li>
+                        \(\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)} \)
+                    </li>
+<li>
+                        \(\cot(\theta) = \frac{1}{\tan(\theta)} \)
+                    </li>
+
+                </ul>
+                </p>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                The relations defined for all triangles are the following:
+                <ul>
+                    <li>
+                        \( \frac{a}{\sin(\alpha)} = \frac{b}{\sin(\beta)} =
+                        \frac{c}{\sin(\theta)} \)
+                    </li>
+                    <li>
+                        \( b^2 = a^2 + c^2 - 2ac\cos(\beta) \)
+                    </li>
+                </ul>
+                </p>
+                <figure id="trig-triangle-relation">
+                    <object id="trig-triangle-relation-obj"
+                        data="../theme/image/math/triangleRelations.svg"
+                        width="25%" type="image/svg+xml">
+                    </object>
+                </figure>
+            </section>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="trigonometry-notions-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="trigonometry-notions-haskell-tab" 
+                            data-toggle="tab" 
+                            href="#trigonometry-notions-haskell" 
+                            role="tab" aria-controls="trigonometry-notions-haskell"
+                            aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="trigonometry-notions-python-tab" data-toggle="tab" 
+                            href="#trigonometry-notions-python" role="tab" 
+                            aria-controls="trigonometry-notions-python" 
+                            aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="trigonometry-notions-cpp-tab" data-toggle="tab" 
+                            href="#trigonometry-notions-cpp" role="tab" 
+                            aria-controls="trigonometry-notions-cpp" 
+                            aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="trigonometry-notions-nim-tab" data-toggle="tab" 
+                            href="#trigonometry-notions-nim" role="tab" 
+                            aria-controls="trigonometry-notions-nim" 
+                            aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="trigonometry-notions-red-tab" data-toggle="tab" 
+                                                               href="#trigonometry-notions-red" role="tab" 
+                                                                                 aria-controls="trigonometry-notions-red" 
+                                                                                 aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="trigonometry-notions-code-content">
+                    <div class="tab-pane fade show active" id="trigonometry-notions-haskell" 
+                                                           role="tabpanel" aria-labelledby="trigonometry-notions-haskell-tab">
+                                                           <pre>
+<code class="language-haskell">
+</code>
+                                                           </pre>
+                    </div>
+                    <div class="tab-pane fade" id="trigonometry-notions-python" 
+                                               role="tabpanel" aria-labelledby="trigonometry-notions-python-tab">
+                                               <pre>
+<code class="language-python">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="trigonometry-notions-cpp" 
+                                               role="tabpanel" aria-labelledby="trigonometry-notions-cpp-tab">
+                                               <pre>
+<code class="language-cpp">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="trigonometry-notions-nim" 
+                                               role="tabpanel" aria-labelledby="trigonometry-notions-nim-tab">
+                                               <pre>
+<code class="language-nim">
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="trigonometry-notions-red" 
+                                               role="tabpanel" aria-labelledby="trigonometry-notions-red-tab">
+                                               <pre>
+<code>
+</code>
+                                               </pre>
+                    </div>
+                </div>
+            </div>
+            <div id="trigonometry-notions-exercise" class="improc-exercise container-fluid">
+                <h4>Exercises</h4>
+                <p>On the triangle <a href="#trig-triangle-relation">above</a>
+                You are given:
+                </p>
+                <ul>
+                    <li>c,ρ,h,m: write a program to compute the perimeter of
+                        the triangle
+                    </li>
+                    <li>θ,β,b: write a program to compute the perimeter of the
+                        triangle
+                    </li>
+                    <li>k, h, m: write a program to compute the perimeter of
+                        the triangle   
+                    </li>
+                    <li>β, θ, c: write a program to compute the perimeter of
+                        the triangle
+                    </li>
+                    <li>h, θ, ρ: write a program to compute the perimeter of
+                        the triangle
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="trigonometry-notions-references">
+                    <li class="work-ref">
+                        <cite>Saul, Mark. Trigonometry. Boston, 2001.
+                        </cite>
+                    </li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+    <div class="container-fluid improc-container">
+        <section class="improc-section container-fluid" id="coordinates">
+            <h3 class="improc-section-title">Coordinates</h3>
+            <div class="improc-summary container-fluid">
+                <h4>Problem Statement</h4>
+                <p id="coordinates-problem-statement" class="lead text-wrap text-monospace" style="width: 50em;">
+                    How do you designate the location of something ?
+                </p>
+            </div>
+            <h4>Description</h4>
+            <div id="1d-coord" class="container-fluid">
+                <h5>Coordinates in 1 Dimensional Space</h5>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                    When we would like to refer to the location of a point in
+                    \(\mathbb{R}\) line, we can simply use its relation to other
+                    numbers on the line, if \(x_i &#60; x\) then the x is on the
+                    right of \(x_i\), if \(x_i &#62; x\) then the x is on the left
+                    of \(x_i\). The distance between x and \(x_i\) is simply
+                    \({\Delta}x = |x - x_i|\).
+                </p>
+                <figure id="d1point">
+                    <object data="../theme/image/math/d1point.svg" type="image/svg+xml">
+                    </object>
+                    <figcaption>1 Dimensional Point Distance</figcaption>
+                </figure>
+            </div>
+            <div id="2d-coord" class="container-fluid">
+                <h5>Coordinates in 2 Dimensional Space</h5>
+                <section id="cartesian-coords" class="container-fluid">
+                    <h6>Cartesian Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        A point P in \(\mathbb{R}^2\) is expressed with two
+                        real numbers as \(P = (a, b)\). Now let us draw a
+                        horizontal line, x and a vertical line, y, which
+                        intersect at a point O with
+                        \(x = \{ x_i | x_i \in \mathbb{R} \} \) and
+                        \(y = \{y_j | y_j \in \mathbb{R} \}\) where \( i, j
+                        \in \mathbb{N}\). The projection
+                        of P onto x is the number a, whereas the projection of
+                        P onto y is the number b. The projection \(p:
+                        \mathbb{R} \to \mathbb{R} \) for
+                        any \(a_i, b_i \in \mathbb{R}\) is:
+                        <dl>
+                            <div>
+                                <dt>injective</dt>
+                                <dd>that is for all pairs that are in its domain
+                                    there exist a single value in its codomain
+                                </dd>
+                            </div>
+                            <div>
+                                <dt>surjective</dt>
+                                <dd>that is all values in its codomain has a
+                                    correspondant in its domain.
+                                </dd>
+                            </div>
+                        </dl>
+                        We can think of the projection \(p\) as a function of
+                        the following sort:
+                        \(p(k_i) = \cases{
+                        x & if y = k_i \\
+                        y & if x = k_i
+                        } \\
+                        \text{where} k_i \in P = \{x, y\}
+                        \)
+                    </p>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        The collection of all pairs that join the domain and
+                        the codomain of such projections constitutes the 2
+                        dimensional euclidean plane and the representation
+                        that we use is known as cartesian coordinate system.
+                    </p>
+                    <figure id="d2point">
+                        <object data="../theme/image/math/d2point.svg" type="image/svg+xml">
+                        </object>
+                        <figcaption>
+                            2 Dimensional Point on Cartesian Coordinate System
+                        </figcaption>
+                    </figure>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        An advantage of using cartesian coordinate system is
+                        apparent in the computation of distances between points
+                        using Pythagoras theorem. The distance between two
+                        points is calculated using: \( p1 = \{x1, y1\}, p2 =
+                        \{x2, y2\} \hspace{1em}
+                        \text{then} \hspace{1em} \Delta (p1, p2) =
+                        \sqrt{(x1-x2)^2 + (y1 - y2)^2} \)
+                    </p>
+                    <figure id="pisagor2d">
+                        <figcaption>Distance of 2 Points on Cartesian
+                            Coordinate System
+                        </figcaption>
+                        <object data="../theme/image/math/pisagor2d.svg" type="image/svg+xml">
+                        </object>
+                    </figure>
+                </section> <!-- cartesian coordinates end -->
+                <section id="polar-coords" class="container-fluid">
+                    <h6>Polar Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        Given a circle whose center is at O and a horizontal line
+                        that passes through the center a point, in 2 dimensional
+                        euclidean plane can also be expressed with the point's
+                        distance and the angle to the center of the circle.
+                    </p>
+                    <figure id="polar-point">
+                        <figcaption>Point with Polar Coordinates
+                        </figcaption>
+                        <object data="../theme/image/math/polarPoint.svg" type="image/svg+xml">
+                        </object>
+                    </figure>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        The distance between two points in polar coordinates are
+                        computed in the following way: \(p1 = \{r, \theta\},
+                        p2 = \{k, {\beta}\} \hspace{1em}
+                        \Delta (p1, p2) = \sqrt{(\frac{r}{\cos(\theta)} -
+                        \frac{k}{\cos(\beta)})^2 + (\frac{r}{\sin(\theta)} -
+                        \frac{k}{\sin(\beta)})^2} \)
+                    </p>
+                </section> <!-- polar coordinates end -->
+            </div> <!-- 2d coordinates end -->
+            <div id="3d-coord" class="container-fluid">
+                <h5>Coordinates in 3 Dimensional Space</h5>
+                <section id="xyz-coords" class="container-fluid">
+                    <h6>Cartesian Coordinates in 3D space</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        Cartesian coordinates in \(\mathbb{R}^3\) do not
+                        differ in nature from their \(\mathbb{R}^2\) equivalents.
+                        Even the distance is calculated using the same
+                        approach in \(\mathbb{R}^2\), that is:
+                        \( p1 = \{x_1, y_1, z_1\} p2 = \{x_2, y_2, z_2\}
+                        \hspace{1em} \Delta(p1, p2) = \sqrt{
+                        (x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2
+                        } \)
+                    </p>
+                    <figure id="xyz-point">
+                        <figcaption>Two Points in 3D Cartesian Coordinate
+                            System</figcaption>
+                        <object id="xyz-point-obj" data="../theme/image/math/xyzPoint.svg" type="image/svg+xml">
+                        </object>
+                        <p>Source: <a href="https://commons.wikimedia.org/wiki/File:Coord_XYZ.svg" title="via Wikimedia Commons">Andeggs</a> [Public domain]</p>
+                    </figure>
+                </section> <!-- xyz-coords end -->
+                <section id="cylinderical-coords" class="container-fluid">
+                    <h6>Cylinderical Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        Cylinderical coordinates are a midway between polar
+                        coordinates and 3d cartesian coordinates. They are
+                        basically polar coordinates with a z component. The
+                        distance is also computed in a very similar way to
+                        polar coordinates: \(
+                        p1 = \{\rho_1, \theta, z_1\}, p2 = \{ \rho_2, \phi, z_2\}
+                        \hspace{1em} \Delta(p1, p2) = \sqrt{
+                        (\frac{\rho_1}{\sin(\theta)} - \frac{\rho_2}{\sin(\phi)})^2
+                        + (\frac{\rho_1}{\cos(\theta)} - \frac{\rho_2}{\cos(\phi)})^2
+                        + (z_1 - z_2)^2
+                        }
+                        \)
+                    </p>
+                    <figure id="cylinder-point">
+                        <figcaption>
+                            2 Points on Cylinderical Coordinate System
+                        </figcaption>
+                        <object id="cylinder-point-obj" data="../theme/image/math/cylinderPoint.svg" type="image/svg+xml">
+                        </object>
+                    </figure>
+                </section> <!-- cylinderical-coords end -->
+                <section id="spherical-coords" class="container-fluid">
+                    <h6>Spherical Coordinates</h6>
+                    <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                        A spherical coordinate are very close to a polar
+                        coordinate in terms of structure in the sense that it
+                        is specified with a length and two angles. We can
+                        convert spherical coordinate to cylinderical
+                        coordinate: \(
+                        S(r, \phi, \theta) \to C(r\sin(\theta), \phi, r\cos(\theta))
+                        \)
+                    </p>
+                    <figure id="spherical-point">
+                        <figcaption>
+                            A Point on Spherical Coordinate System
+                        </figcaption>
+                        <object id="spherical-point-obj" data="../theme/image/math/sphericalPoint.svg" type="image/svg+xml">
+                        </object>
+                        <p>Source:
+                            <a href="https://commons.wikimedia.org/wiki/File:3D_Spherical.svg" title="via Wikimedia Commons">
+                                Andeggs
+                            </a>
+                            [Public domain]
+                        </p>
+                    </figure>
+                </section>
+            </div>
+            <h4>Code snippets</h4>
+            <div class="code-container">
+                <ul class="nav nav-tabs" id="coordinates-code-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="coordinates-haskell-tab" data-toggle="tab" href="#coordinates-haskell" role="tab" aria-controls="coordinates-haskell" aria-selected="true">Haskell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-python-tab" data-toggle="tab" href="#coordinates-python" role="tab" aria-controls="coordinates-python" aria-selected="false">Python</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-cpp-tab" data-toggle="tab" href="#coordinates-cpp" role="tab" aria-controls="coordinates-cpp" aria-selected="false">Cpp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-nim-tab" data-toggle="tab" href="#coordinates-nim" role="tab" aria-controls="coordinates-nim" aria-selected="false">Nim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="coordinates-red-tab" data-toggle="tab" href="#coordinates-red" role="tab" aria-controls="coordinates-red" aria-selected="false">Red</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="coordinates-code-content">
+                    <div class="tab-pane fade show active" id="coordinates-haskell" role="tabpanel" aria-labelledby="coordinates-haskell-tab">
+                        <pre>
+<code class="language-haskell">
+--|'dist1d' 1 dimensional coordinate distance
+dist1D :: Real -> Real -> Real
+dist1D p1 p2 = if (p1 - p2) > 0 then (p1 - p2) else -(p1 - p2)
+</code>
+                                                           </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-python" role="tabpanel" aria-labelledby="coordinates-python-tab">
+                        <pre>
+<code class="language-python">
+def dist1D(p1, p2):
+    "distance 1 dimensional point"
+    return abs(p1 - p2)
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-cpp" role="tabpanel" aria-labelledby="coordinates-cpp-tab">
+                        <pre>
+<code class="language-cpp">
+#include <cmath>        // std::abs
+double dist1D(double p1, double p2) 
+{
+    double diff = p1 - p2;
+    return std::abs(diff);
+}
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-nim" role="tabpanel" aria-labelledby="coordinates-nim-tab">
+                        <pre>
+<code class="language-nim">
+import system
+proc dist1D(p1: float, p2: float): float =
+    ## distance 1 dimensional
+    return abs(p1 - p2)
+</code>
+                                               </pre>
+                    </div>
+                    <div class="tab-pane fade" id="coordinates-red" role="tabpanel" aria-labelledby="coordinates-red-tab">
+                        <pre>
+<code>
+dist1D: function [p1 p2] [
+    ;; distance 1 dimensional points
+    diff: p1 - p2
+    res1: absolute diff
+    return res1
+]
+</code>
+                                               </pre>
+                    </div>
+                </div>
+            </div>
+            <div id="coordinates-exercise" class="improc-exercise container-fluid">
+                <h4>Exercises</h4>
+                <ul>
+                    <li>
+                        Write program to compute distance between two points
+                        in two dimensional cartesian coordinate system.
+                    </li>
+                    <li>
+                        Write program to compute distance between two points
+                        in n dimensional cartesian coordinate system.
+                    </li>
+                    <li>
+                        Write program to compute distance between two points
+                        in 2 dimensional polar coordinate system.
+                    </li>
+                    <li>
+                        Write program to compute distance between two points
+                        in 3 dimensional cylindrical coordinate system.
+                    </li>
+                    <li>
+                        Write program to compute distance between two points
+                        in 3 dimensional spherical coordinate system.
+                    </li>
+                    <li>
+                        Write program to convert 2 dimensional Cartesian coordinate
+                        system to polar coordinate.
+                    </li>
+                    <li>
+                        Write program to convert a cylindrical coordinate
+                        xyz coordinate.
+                    </li>
+                    <li>
+                        Write program to convert a spherical coordinate
+                        xyz coordinate.
+                    </li>
+                </ul>
+            </div>
+            <footer class="container-fluid">
+                <h4>References</h4>
+                <ul id="coordinates-references">
+                    <li class="work-ref">
+                        <cite>Nitecki, Zbigniew. Calculus in 3D: Geometry, Vectors, and Multivariate Calculus, 2018.
+                        </cite>
+                    </li>
+                </ul>
+            </footer>
+        </section>
+    </div>
+        <div class="container-fluid improc-container">
         <section class="improc-section" id="numerical-sequence">
             <h3>Infinite Numerical Sequences</h3>
             <div class="improc-summary container-fluid">
@@ -641,7 +930,7 @@ logarithm: function [base value] [
                 Let's see how we represent the third example:
             </p>
             <figure>
-                <object data="../theme/image/sequence.svg" type="image/svg+xml">
+                <object data="../theme/image/math/sequence.svg" type="image/svg+xml">
                 </object>
                 <figcaption>1 Dimensional Point Distance</figcaption>
             </figure>

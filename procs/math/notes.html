@@ -197,12 +197,12 @@
                         <dt>Zero Exponent</dt>
                         <dd>\(b^0 = 1\)
                         </dd>
-                        <dd>\(b^{n} \times b = b^{n+1}
+                        <dd>\(b^{n} \times b = b^{n+1}\)
                         </dd>
                     </div>
                     <div>
                         <dt>Negative Exponent</dt>
-                        <dd>\(b^{-n} = 1/b^{-n}\)
+                        <dd>\(b^{-n} = 1/b^{n}\)
                         </dd>
                     </div>
                     <div>
@@ -685,9 +685,9 @@ logarithm: function [base value] [
                         The distance between two points in polar coordinates are
                         computed in the following way: \(p1 = \{r, \theta\},
                         p2 = \{k, {\beta}\} \hspace{1em}
-                        \Delta (p1, p2) = \sqrt{(\frac{r}{\cos(\theta)} -
-                        \frac{k}{\cos(\beta)})^2 + (\frac{r}{\sin(\theta)} -
-                        \frac{k}{\sin(\beta)})^2} \)
+                        \Delta (p1, p2) = \sqrt{(r \cos(\theta) -
+                        k \cos(\beta))^2 + (r \sin(\theta) -
+                        k \sin(\beta))^2} \)
                     </p>
                 </section> <!-- polar coordinates end -->
             </div> <!-- 2d coordinates end -->
@@ -723,8 +723,8 @@ logarithm: function [base value] [
                         polar coordinates: \(
                         p1 = \{\rho_1, \theta, z_1\}, p2 = \{ \rho_2, \phi, z_2\}
                         \hspace{1em} \Delta(p1, p2) = \sqrt{
-                        (\frac{\rho_1}{\sin(\theta)} - \frac{\rho_2}{\sin(\phi)})^2
-                        + (\frac{\rho_1}{\cos(\theta)} - \frac{\rho_2}{\cos(\phi)})^2
+                        (\rho_1 \sin(\theta)} - \rho_2 \sin(\phi))^2
+                        + (\rho_1 \cos(\theta) - \rho_2 \cos(\phi))^2
                         + (z_1 - z_2)^2
                         }
                         \)
@@ -745,7 +745,7 @@ logarithm: function [base value] [
                         is specified with a length and two angles. We can
                         convert spherical coordinate to cylinderical
                         coordinate: \(
-                        S(r, \phi, \theta) \to C(r\sin(\theta), \phi, r\cos(\theta))
+                        S(r, \phi, \theta) \to C(r \sin(\theta), \phi, r \cos(\theta))
                         \)
                     </p>
                     <figure id="spherical-point">

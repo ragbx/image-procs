@@ -73,12 +73,30 @@ def sumCheck(f1, f2, v):
     derf2 = der(f2, v, 0.1)
     return derc == (derf1 + derf2)
 
+# Answer 2
+def area(b, h): return b * h / 2
+
 def integ(f: Callable, args: list, stepsize: float):
     counter = 0
     for a in args:
         v = f(a)
         counter += v*stepsize
     return counter
+
+def areaTriangle(b, h): 
+    fcounter = 0
+    scounter = 0
+    bx, by = b
+    hx, hy = h
+    diff_x = bx - hx
+    stepsize = 1
+    # first part
+    oval = 0
+    nval = 0
+    for i in range(hx):
+        for k in range(hy):
+            fcounter += k
+            
 </code>
                                                </pre>
             </div>
@@ -161,6 +179,19 @@ sumCheck: function [x] [
 
             </div>
         </li>
+        <li>
+            <div id="answer-2" class="container-fluid">
+                <p>
+                    Write a program to compute the area of a triangle
+                    using integral function defined above. Triangle area
+                    is b x h x 1/2. b is base side, h, height that is
+                    perpendicular to base.
+
+                </p>
+
+            </div>
+        </li>
+
     </ol>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>

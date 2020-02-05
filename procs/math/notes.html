@@ -887,11 +887,106 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
             <div class="improc-summary container-fluid">
                 <h4>Problem Statement</h4>
                 <p id="limit-notions-problem-statement" class="lead text-wrap text-monospace" style="width: 50;">
+                    How do we describe a number that will never be reached by
+                    an infinite sequence ?
                 </p>
             </div>
             <h4>Description</h4>
-            <p class="improc-description text-monospace text-wrap" style="width: 62;">
-                Algorithm description
+            <p class="improc-description text-monospace text-wrap"
+            style="width: 62em;">
+            Tarasov defines the limit in the following way
+            <blockquote style="width: 62em;">
+                The number T is said to be the limit of sequence if for any 
+                positive number \(\epsilon\) there is a real number N such that for
+                all n &#62; N the following inequality holds:
+                    \[|y_n - T| &#60; \epsilon \]
+            </blockquote>
+            At first glance the definition is opaque, because we expect that
+            the terms of the definition is somehow dependent but they are not.
+            The notation for the limit is the following: 
+            \[\lim_{n \to \inf} y_n = a\]
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            N represent an index of term in our sequence. n &#62; N means that
+            the inequality should hold from N+1 and on with N+1 included. So
+            if N is 15th term in an infinite sequence the inequality defined
+            above should hold for 16th term and on.
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            The number \(\epsilon\) is simply any positive number. Notice that
+            it results from taking the difference between a term of the
+            sequence and the limit value. When the limit is known, the only
+            thing that restricts the possible values of \(\epsilon\) is that
+            there must be a term from which point on the inequality holds.
+            When the limit is unknown, we can simply pick any positive value we want. 
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Notice that we are still not talking about how certain the limit
+            value is. That is how do we make sure that the value we obtained
+            as limit will hold for all of the values of the sequence from the
+            given nth term and on. This statement has an interesting
+            corollary: The bounds of an infinite sequence is calculated at a
+            finite subset of the sequence.
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            For example, if I have an infinite sequence with a limit, I can
+            express the definition of the limit in the following way as well:
+            \[ a - \epsilon &#60; y_n &#62; a + \epsilon \]
+            For the sake of example let's say that these inequalities hold from
+            the 40th term and on for a given value of \(\epsilon\). If I
+            select the greatest term A between the first 39 elements of the
+            sequence and the smallest term, B therein, I can reframe these
+            inequalities as \[ B \leq y_n \leq A \]. Notice that A, and B are
+            selected from a finite set of values but they represent a bound
+            for an infinite sequence of numbers, and this is not problematic.
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Why is not problematic ? Because the definition of limit states
+            that it is the <q>tail</q> that needs to hold the inequality, the
+            head is defined as a finite set that does not hold the inequality.
+            For an infinite sequence to be convergent, it is sufficient that
+            the sequence be monotonic and bounded. A convergent infinite
+            sequence has a single limit.  Up to here we have heard several
+            terms describing the infinite sequences: convergent, bounded,
+            monotonic etc. The relations between these terms are best
+            represented as a diagram:
+            </p>
+            <figure id="seq-rel-fig">
+                <object id="seq-rel-fig-obj" data="../theme/image/math/seqRel.svg" type="image/svg+xml">
+                </object>
+            </figure>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Now let's consider the limit of a function. The definition of the
+            limit of the function given by Tarasov is the following:
+            <blockquote style="width: 62em;">
+                A number b is said to be the limit of a function f (x) at
+                a point x = a if for any numerical sequence \(x_n\) satisfying
+                the conditions:
+                (1) all \(x_n\), belong to the domain of the function,
+                (2) \(x_n \not = a\) for any n,
+                (3) the sequence \(x_n\) is convergent and its limit is a; the
+                sequence of the corresponding values of the function 
+                (the sequence \( f(x_n) \) ) is convergent and its limit is b.
+                So we should "construct" a sequence convergent to a:
+            </blockquote>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            We have a function such as \(f: D \to C\) and 
+            we have a sequence: \[
+            x_1, x_2, x_3, ..., x_n, ... 
+            \hspace{1em} 
+            \text{where} \hspace{1em} x_n \in D
+            \] This sequence converges to a value \(a\).
+            We also have another sequence: \[
+            f(x_1), f(x_2), ..., f(x_n), ... \hspace{1em} \text{where}
+            \hspace{1em} f(x_n)
+            \in C
+            \] This sequence converges to a value \(b\).
+            Basically any sequence with a limit \(a\) constructed from domain
+            should have a corresponding sequence with a limit \(b\) for in
+            codomain, then we can say that the number \(b\) is the limit of a
+            function. The notation for the limit of a function is the
+            following: \[ \lim_{x \to a} f(x) = b \]
             </p>
             <h4>Code snippets</h4>
             <div class="code-container">
@@ -945,10 +1040,26 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
                     </div>
                 </div>
             </div>
+            <div id="limit-notions-exercise" class="improc-exercise container-fluid">
+                <h4>Exercises</h4>
+                <ul>
+                    <li>Write a program to check whether a number is limit of
+                        the following numeric sequence <code>
+                            [10,-10,9,-9,8,-8,7,-7,6,-6,5,-5,4,-4,3,-3,2,-2,1,-1]
+                        </code>
+                        given \(\epsilon = 0.1\)
+                    </li>
+                </ul>
+            </div>
             <footer class="container-fluid">
                 <h4>References</h4>
                 <ul id="limit-notions-references">
-                    <li class="work-ref"><cite></cite></li>
+                    <li class="work-ref">
+                        <cite>Tarasov, L. V. Calculus: Basic Concepts for High
+                            Schools. Moscow; Chicago: Mir Publishers ;
+                            [Distributed by] Imported Publications,
+                        1982.</cite>
+                    </li>
                 </ul>
             </footer>
         </section>
@@ -958,12 +1069,200 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
             <h3>Calculus</h3>
             <div class="improc-summary container-fluid">
                 <h4>Problem Statement</h4>
-                <p id="calculus-problem-statement" class="lead text-wrap text-monospace" style="width: 50;">
+                <p id="calculus-problem-statement" class="lead text-wrap
+                text-monospace" style="width: 50em;">
+                    How can one analyse functions and their behaviors ?
                 </p>
             </div>
             <h4>Description</h4>
-            <p class="improc-description text-monospace text-wrap" style="width: 62;">
-                Algorithm description
+            <p class="improc-description text-monospace text-wrap"
+            style="width: 62em;">
+            When analyzing the behavior of a function whose co-domain is
+            \(\mathbb{R}\), two of the most basic groups that are revealing
+            are the one which is constituted by having a difference of
+            points to which the function is evaluated, and the other one is
+            the one which is constituted by having a sum of points to which
+            the function is evaluated. Roughly speaking is the first one is
+            derivative, and the second one is integral. 
+            </p>
+            <h5>Derivative</h5>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Derivative of a function is found using a process called
+            differentiation. In a single variable calculus, it is expressed as \[ 
+            \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}
+            \]
+            In multivariate calculus, the derivative is generalized to n
+            dimension using partial derivatives which is defined as \[
+            \lim_{h \to 0} \frac{f(a_1, a_2, ..., a_i+h, ..., a_n) - f(a_1,
+            a_2, ..., a_i, ..., a_n)}{h}
+            \]
+            The notations denoting the derivative are numerous. We will be
+            using the prime notation as in \(f'(x)\) for the derivative of
+            f(x).
+            The single variable version is mostly demonstrated with a secant line
+            becoming a tangent line as in the following:
+            </p>
+            <figure id="deriv-secant-fig">
+                <object id="deriv-secant-fig-obj"
+                    data="../theme/image/math/derivSecant.svg" type="image/svg+xml">
+                </object>
+            </figure>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Several rules are associated to computing derivatives:
+            <dl>
+                <div>
+                    <dt>scalar product</dt>
+                    <dd>\( (a f(x))' = a f'(x) \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>sum</dt>
+                    <dd>\( (f(x) + g(x))' = f'(x) + g'(x) \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>subtraction</dt>
+                    <dd>\( (f(x) - g(x))' = f'(x) - g'(x) \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>product</dt>
+                    <dd>\( (f(x)g(x))' = f'(x)g(x) + g'(x)f(x) \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>division</dt>
+                    <dd>\( ( \frac{f(x)}{g(x)} )' = \frac{ f'(x)g(x) -
+                    g'(x)f(x)}{g(x)^2} \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>chain of derivatives</dt>
+                    <dd>\( ( f(g(x)) )' = f'(g(x)) \cdot g'(x) \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>Derivatives of elementary polynomial functions</dt>
+                    <dd>\( f(x) = x^k \hspace{1em} f'(x) = kx^{k-1} \)
+                    </dd>
+                </div>
+                <div>
+                    <dt>Derivatives of reciprocal</dt>
+                    <dd>\( g(x) = \frac{1}{f(x)} \hspace{1em} g'(x) =
+                    -\frac{f'(x)}{(f(x))^2} \)
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Derivative of e</dt>
+                    <dd>\( f(x) = e^{ax} \hspace{1em} f'(x) = ae^{ax} \)
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Derivative of log</dt>
+                    <dd>\(f(x) = \log_c(x) \hspace{1em} f'(x) =
+                    \frac{1}{x\ln(c)} \)
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Derivative of ln of function</dt>
+                    <dd>\( ( \ln (f(x)) )' = \frac{f'(x)}{f(x)} \)
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Derivative of sin, cos, tan</dt>
+                    <dd>\( (\sin(x))' = \cos(x) \)
+                    </dd> 
+                    <dd>\( (\cos(x))' = -\sin(x) \)
+                    </dd>
+                    <dd>\( (\tan(x))' = \frac{1}{\cos(x)^2} = 1 + \tan(x)^2 \)
+                    </dd>
+
+                </div>
+            </dl>
+            </p>
+            <h5>Integral</h5>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Integrals are best represented as areas under the curve that are
+            being approximated with rectangles. Suppose that the function f is
+            evaluated at the interval t1 and t2 in of our figure. Its least
+            upper bound is M and greatest lower bound is m for all the values
+            that it maps to from the interval. Let's formulate that a little
+            more clearly:
+            \[ f: D \to C \hspace{1em} D = \{ t_1, t_2, ..., t_6 \} \]
+            \[ m \leq f(x) \leq M \hspace{1em} m, M \in C \hspace{1em} x \in
+            \{ t_1, ..., t_2 \}\]
+            With these we can define the areas for two different rectangles the
+            bigger one whose height is M and the smaller one whose height is
+            m. The bigger one is defined as upper sum, U, and the lower one is
+            defined as lower sum, L.
+            \[
+            \begin{eqnarray}
+            L(f(x), P) = \sum_{i=1}^{n} = m_i \times (t_i - t_{i-1}) \\
+            U(f(x), P) = \sum_{i=1}^{n} = M_i \times (t_i - t_{i-1}) \\
+            \text{where} \hspace{1em} P = \{ t_1, t_2, ..., t_i, ..., t_n \}
+            \\
+            L(f(x), P) \leq U(f(x), P)
+            \end{eqnarray}
+            \]
+            A function which is integrable is defined as the following:
+            \[ 
+            inf\{U(f(x), P): \text{P is a partition of} \{t_1, t_2, ..., t_n\}
+            \} = sup\{ L(f(x), P): \text{P is a partition of} \{t_1, t_2, ...,
+            t_n\}
+            \}
+            \]
+            Inf and sup, denote the greatest lower bound, and the least upper
+            bound respectively.
+            </p>
+            <figure id="riemann-rect-fig">
+                <figcaption>
+                    Area under the curve with rectangles
+                </figcaption>
+                <object id="riemann-rect-fig-obj"
+                        width="30%"
+                    data="../theme/image/math/riemannSum.svg" type="image/svg+xml">
+                </object>
+            </figure>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            The notation for single variable definite integral is: \[
+            \int_{a}^{b} f(x)dx \]
+            When we are dealing with a multivariate function the notation is
+            similar: \[ 
+            \int ... \int_T f(x_1, x_2, ..., x_n) dx_1, ... dx_n
+            \]
+            For example for \( f: \mathbb{R} x \mathbb{R} x \mathbb{R} \to
+            \mathbb{R}\) We would have something
+            like \[
+            \int_{p1_1}^{p1_n} \int_{p2_1}^{p2_n} \int_{p3_1}^{p3_n} f(p1_i,
+            p2_i, p3_i)
+            dp1dp2dp3
+            \]
+            where \(p1, p2, p3\) are partitions of the intervals of variables
+            of the function f.
+            </p>
+            <h5>
+                Fundamental Theorem of Calculus
+            </h5>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            The two theorems that accompany the derivative and the integral
+            relate them to each other. The first theorem states that if a
+            function f is integrable at the interval [a, b] and we have
+            another function F also defined for the same interval as \( F(x) =
+            \int_a^x f(t)dt \) if f is continuous at a point c in the interval
+            than the function F is differentiable at that point so that
+            \(F'(c) = f(c)\)
+            A corollary of this statement is that for a function f that is a
+            derivative of another function g, \(f=g'\) the integral of f in a
+            closed interval [a, b] is simply \(\int_a^b f = g(b) - g(a)\)
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            The second theorem states that if a function f, not necessarily
+            continuous, defined on the closed interval [a, b], and \(f = g'\)
+            then again \(\int_a^b f = g(b) - g(a)\)
             </p>
             <h4>Code snippets</h4>
             <div class="code-container">
@@ -988,39 +1287,126 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
                     <div class="tab-pane fade show active" id="calculus-haskell" role="tabpanel" aria-labelledby="calculus-haskell-tab">
                         <pre>
 <code class="language-haskell">
+der :: (Real -> Real) -> Real -> Real -> Real
+der f x h = (f(x + h) - f(x)) / h
+integ :: (Real -> Real) -> [Real] -> Real -> Real -> Real
+
+integ f a:args stepsize counter 
+    | null (a:args) = counter
+    | otherwise = integ f args stepsize (f(a) * stepsize)
+
 </code>
                                                            </pre>
                     </div>
                     <div class="tab-pane fade" id="calculus-python" role="tabpanel" aria-labelledby="calculus-python-tab">
                         <pre>
 <code class="language-python">
+def der(f: Callable, x: float, h: float):
+    v1 = f(x+h)
+    v2 = f(x)
+    return (v1 - v2) / h
+
+def integ(f: Callable, args: list, stepsize: float):
+    counter = 0
+    for a in args:
+        v = f(a)
+        counter += v*stepsize
+    return counter
 </code>
                                                </pre>
                     </div>
                     <div class="tab-pane fade" id="calculus-cpp" role="tabpanel" aria-labelledby="calculus-cpp-tab">
                         <pre>
 <code class="language-cpp">
+float f(float arg);
+
+float der(float x, float h)
+{
+    float v1 = f(x+h);
+    float v2 = f(x);
+    return (v1 - v2) / h;
+}
+float integ(std::vector<float> args, float stepsize)
+{
+    float counter = 0;
+    for (int i=0; i < vector.size(); i++)
+      {
+        counter += f(vector[i]) * stepsize;
+      }
+    return counter;
+}
 </code>
                                                </pre>
                     </div>
                     <div class="tab-pane fade" id="calculus-nim" role="tabpanel" aria-labelledby="calculus-nim-tab">
                         <pre>
 <code class="language-nim">
+proc f(arg: float): float
+
+proc der(x: float, h: float): float =
+    let v1 = f(x+h)
+    let v2 = f(x)
+    return (v1 - v2) / h
+
+proc integ(args: seq[float], step: float): float =
+    var counter = 0
+    for a in args:
+        v = f(a) * step
+        counter += v
+    return counter
+
 </code>
                                                </pre>
                     </div>
                     <div class="tab-pane fade" id="calculus-red" role="tabpanel" aria-labelledby="calculus-red-tab">
                         <pre>
 <code>
+f: function [a] [return a]
+der: function[x h] [
+    v1: f [x+h]
+    v2: f [x]
+    res: v1-v2
+    return res / h
+]
+integ: function [[a] steps] [
+]
 </code>
                                                </pre>
                     </div>
                 </div>
             </div>
+            <div id="calculus-exercises">
+                <h4>
+                    Exercises
+                </h4>
+                <ul>
+                    <li>Write small programs to test the rules of
+                        differentiation. Did you notice anything strange ?
+                    </li>
+                    <li>Write a program to compute the area of a triangle
+                        using integral function defined above. Triangle area
+                        is b x h x 1/2. b is base side, h, height that is
+                        perpendicular to base.
+                    </li>
+                    <li>Write a program to compute the area of a rectangle
+                        using integral function defined above. Rectangle area
+                        is width x height
+                    </li>
+                    <li>Write a program to compute the volume of cuboid.
+                        Volume is \( w \times h \times l \) w, width, h,
+                        height, l, length.
+                    </li>
+                </ul>
+                
+            </div>
             <footer class="container-fluid">
                 <h4>References</h4>
                 <ul id="calculus-references">
-                    <li class="work-ref"><cite></cite></li>
+                    <li class="work-ref">
+                        <cite>
+Spivak, Michael. Calculus. Houston, Tex.: Publish or Perish, 2008. https://archive.org/details/calculus4thediti00mich.
+                        </cite>
+                    </li>
                 </ul>
             </footer>
         </section>

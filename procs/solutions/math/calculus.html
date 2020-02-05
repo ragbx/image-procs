@@ -83,20 +83,12 @@ def integ(f: Callable, args: list, stepsize: float):
         counter += v*stepsize
     return counter
 
-def areaTriangle(b, h): 
-    fcounter = 0
-    scounter = 0
-    bx, by = b
-    hx, hy = h
-    diff_x = bx - hx
-    stepsize = 1
-    # first part
-    oval = 0
-    nval = 0
-    for i in range(hx):
-        for k in range(hy):
-            fcounter += k
-            
+# answer 2
+def f(x): return x + 3
+def g(x): return 12 - 2 * x
+
+def areaTriangle(fline1=f, fline2=g, v1=(1,4), v2=(4, 4), v3=(3,6)): 
+    "compute area of triangle using integral"
 </code>
                                                </pre>
             </div>

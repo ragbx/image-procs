@@ -99,13 +99,13 @@
                         <pre>
 <code class="language-haskell">
 --|'convert2DHomoToInHomo' convert homogeneous 2 coordinate to inhomogeneous
-convert2DHomoToInHomo :: (Real, Real, Real) -> (Real, Real)
+convert2DHomoToInHomo :: (Real, Real, Real) -&#62; (Real, Real)
 convert2DHomoToInHomo (0, 0, 0) = error "Can not have (0, 0, 0) as argument"
 convert2DHomoToInHomo (_, _, 0) = 
     error "Can not have an inhomogeneous equivalent for given point"
 convert2DHomoToInHomo (x, y, w) = (x / w, y / w)
 --|'convert2DInHomoToHomo' convert inhomogeneous to homogeneous ones
-convert2DInHomoToHomo :: Real -> (Real, Real) -> (Real, Real, Real)
+convert2DInHomoToHomo :: Real -&#62; (Real, Real) -&#62; (Real, Real, Real)
 convert2DInHomoToHomo 0 (_, _) = error "w has to be bigger than 0"
 convert2DInHomoToHomo w (x, y) = (x * w, y * w, w)
 </code>

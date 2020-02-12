@@ -248,12 +248,12 @@
                         <pre>
 <code class="language-haskell">
 -- operators
-add :: Real -> Real -> Real
-subtr :: Real -> Real -> Real
-div :: Real -> Real -> Real
-multi :: Real -> Real -> Real
-exponent :: Real -> Real -> Real
-logarithm_a_b :: Float -> Float -> Float
+add :: Real -&#60; Real -&#60; Real
+subtr :: Real -&#60; Real &#60; Real
+div :: Real -&#60; Real &#60; Real
+multi :: Real -&#60; Real &#60; Real
+exponent :: Real -&#60; Real &#60; Real
+logarithm_a_b :: Float -le Float &#60; Float
 
 add a b = a + b
 subtr a b = a - b
@@ -543,7 +543,9 @@ logarithm: function [base value] [
                                 </dd>
                             </div>
                         </dl>
-                        We can think of the projection \(p\) as a function of the following sort: \(p(k_i) = \cases{ x & if y = k_i \\ y & if x = k_i } \\ \text{where} k_i \in P = \{x, y\} \)
+                        We can think of the projection \(p\) as a function of
+                        the following sort: \(p(k_i) = \cases{ x &#38; if y =
+                        k_i \\ y &#38; if x = k_i } \\ \text{where} k_i \in P = \{x, y\} \)
                     </p>
                     <p class="improc-description text-monospace text-wrap" style="width: 62em;">
                         The collection of all pairs that join the domain and the codomain of such projections constitutes the 2 dimensional euclidean plane and the representation that we use is known as cartesian coordinate system.
@@ -661,8 +663,8 @@ logarithm: function [base value] [
                         <pre>
 <code class="language-haskell">
 --|'dist1d' 1 dimensional coordinate distance
-dist1D :: Real -> Real -> Real
-dist1D p1 p2 = if (p1 - p2) > 0 then (p1 - p2) else -(p1 - p2)
+dist1D :: Real -&#60; Real -&#60; Real
+dist1D p1 p2 = if (p1 - p2) &#60; 0 then (p1 - p2) else -(p1 - p2)
 </code>
                                                            </pre>
                     </div>
@@ -786,9 +788,16 @@ dist1D: function [p1 p2] [
                 <figcaption>1 Dimensional Point Distance</figcaption>
             </figure>
             <p class="improc-description text-monospace text-wrap" style="width: 62;">
-                Here is the million dollar question. How do we know that fractions won't ever reach to 0 ? This is problematic, because the sequence is <mark>monotonic</mark>, that is it steadily decreases, formally a monotonic non increasing sequence
-                has the following structure: \( y_1 > y_2 > y_3 > ... y_n \) and our sequence conforms to this structure. This was also known as the Zenon paradox formulated in a less formal way by the ancient greek philosopher. Modern mathematics had
-                invented the bounded infinite sequences to solve this paradox. But what is a bounded sequence really ?
+                Here is the million dollar question. How do we know that
+                fractions won't ever reach to 0 ? This is problematic, because
+                the sequence is <mark>monotonic</mark>, that is it steadily
+                decreases, formally a monotonic non increasing sequence has
+                the following structure: \( y_1 &le; y_2 &le; y_3 &le; ... y_n
+                \) and our sequence conforms to this structure. This was also
+                known as the Zenon paradox formulated in a less formal way by
+                the ancient greek philosopher. Modern mathematics had invented
+                the bounded infinite sequences to solve this paradox. But what
+                is a bounded sequence really ?
             </p>
             <p class="improc-description text-monospace text-wrap" style="width: 62;">
                 Tarasov defines it the following way:
@@ -833,8 +842,8 @@ dist1D: function [p1 p2] [
 <code class="language-haskell">
 -- lazy evaluation in haskell makes it possible to implement infinite
 -- sequences
-myLaw :: a -> a
-mySequenceGenerator :: (a -> a) -> [a] -> [a]
+myLaw :: a -&#60; a
+mySequenceGenerator :: (a -&#60; a) -&#60; [a] -&#60; [a]
 mySequenceGenerator law sequence = map law sequence
 
 </code>
@@ -1287,9 +1296,9 @@ def mySequenceGenerator(law: Callable, sequence: Generator):
                     <div class="tab-pane fade show active" id="calculus-haskell" role="tabpanel" aria-labelledby="calculus-haskell-tab">
                         <pre>
 <code class="language-haskell">
-der :: (Real -> Real) -> Real -> Real -> Real
+der :: (Real -&#60; Real) -&#60; Real -&#60; Real -&#60; Real
 der f x h = (f(x + h) - f(x)) / h
-integ :: (Real -> Real) -> [Real] -> Real -> Real -> Real
+integ :: (Real -&#60; Real) -&#60; [Real] -&#60; Real -&#60; Real -&#60; Real
 
 integ f a:args stepsize counter 
     | null (a:args) = counter
@@ -1418,77 +1427,545 @@ Spivak, Michael. Calculus. Houston, Tex.: Publish or Perish, 2008. https://archi
         </section>
     </div>
     <div class="container-fluid improc-container">
-        <section class="improc-section" id="solid-geometry-notions">
-            <h3>Elements of Plane and Solid Geometry</h3>
+        <section class="improc-section" id="geometric-primitives">
+            <h3>Geometric Primitives</h3>
             <div class="improc-summary container-fluid">
                 <h4>Problem Statement</h4>
-                <p id="solid-geometry-notions-problem-statement" class="lead text-wrap text-monospace" style="width: 50;">
+                <p id="geometric-primitives-problem-statement" 
+                class="lead text-wrap text-monospace"
+                style="width: 50em;">
+                How do we describe shapes using equations ?
                 </p>
             </div>
             <h4>Description</h4>
-            <p class="improc-description text-monospace text-wrap" style="width: 62;">
-                Algorithm description
+            <p class="improc-description text-monospace text-wrap"
+            style="width: 62em;">
+            Notice the difference between the problem statement of 
+            <a href="#coordinates">coordinates</a> and this one. Coordinates
+            are important for designating the location of something.
+            Coordinates place something somewhere, they imply the existence of
+            a system in which something can be placed, the primitives of
+            geometry introduced here are independent of these systems. A 2
+            dimensional line is a line whether the points they make it up is
+            expressed in cylinderical coordinates or spherical coordinates.
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            We look at points and lines in 2d and 3d space. Curves and
+            surfaces will be covered later on.
+                <dl class="row text-monospace text-wrap container-fluid">
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, x, is defined using two real numbers is
+                            expressed as \(\textbf{x} = (x, y) \in R^2\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point in homogeneous coordinates
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, \(\tilde x\), is defined using three real numbers is
+                            expressed as \[
+                            \tilde x = (x, y, w) \in P^2
+                            \] where \(P^2 = R^3 - (0, 0, 0)\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Point as Augmented Vector
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            An augmented vector, \( \bar x \) is defined as \(
+                            \bar x = (x, y, 1) \). Its relation to homogeneous
+                            coordinate is \[
+                            \tilde x = \bar x w = (x * w, y * w, w)
+                            \]
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            2D Line
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A line, \(\tilde l \), defined in in two dimensions is
+                            expressed as <ul>
+                                <li>Parametrically: \( Q = P + tA \) where Q
+                                    and P are points on a line and A is the
+                                    unit vector describing the direction of
+                                    the line. t refers to the scale of the
+                                    unit vector.</li>
+                                <li>Linear Equation: \( 0 = ax + by + c \)</li>
+                                <li>Slope intercept: \( 0 = mx - y + c \)</li>
+                                <li>With homogeneous coordinates: \( I \cdot \bar x
+                                    \) where \(I = (a, b, c) \) and \(\bar x =
+                                (x, y, 1) \)</li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            3D Points
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, x, is defined using three real numbers is
+                            expressed as \(\textbf{x} = (x, y, z) \in R^3\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            3D Point in homogeneous coordinates
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            A point, \(\tilde x\), is defined using four real numbers is
+                            expressed as \[
+                            \tilde x = (x, y, z, w) \in P^3
+                            \] where \(P^3 = R^4 - (0, 0, 0, 0)\)
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            3D Point as Augmented Vector
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                            An augmented vector, \( \bar x \) is defined as \(
+                            \bar x = (x, y, z, 1) \). Its relation to homogeneous
+                            coordinate is \[
+                            \tilde x = \bar x w = (x * w, y * w, z * w, w)
+                            \]
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            3D Planes
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        A Plane in 3 dimensions can be expressed
+                            <ul>
+                                <li>Parametrically: \( P = \{ p | (p-q) \cdot
+                                    N_{P} = 0 \} \) where p, q are points on plane
+                                    that satisfy the equation, and N is the normal
+                                    to the plane.</li>
+                               <li>Linear Equation: \( 0 = ax + by + cz + d \)</li>
+                               <li>With homogeneous coordinates: \( I \cdot \bar x
+                                        \) where \(I = (a, b, c, d) \) and \(\bar x =
+                                    (x, y, z, 1) \)</li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            3D Lines
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        A line in 3 dimensions can be expressed
+                            <ul>
+                                <li>Parametrically: \( L = \{ p | p = q + \hat
+                                    d k\} \), where q and k are two points on
+                                the line and d is its direction.</li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </p>
+            <h5>Transformations</h5>
+            <h6>2D Transformation</h6>  
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            We are going to cover basic 2d rigid body motion: rotation,
+            displacement, scaling, affine, and perspective.
+                <dl>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                                Displacement
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        preserves orientation
+                           <ul>
+                                <li>\( \text{let} p \in R^2 \hspace{1em} p' = p + t
+                                    \)
+                                </li>
+                                <li>\(\text{let} \bar{p} \in P^2 \hspace{1em}
+                                    \pmatrix{
+                                    1 &#38; 0 &#38; t_x \\
+                                    0 &#38; 1 &#38; t_y \\
+                                    0 &#38; 0 &#38; 1
+                                    } \cdot \bar{p}
+                                    \)
+                                </li>
+                            </ul>
+
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                                Rotation
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        preserves lengths
+                           <ul>
+                                <li>\( \text{let} p \in R^2 \hspace{1em} p' =
+                                    pT
+                                    \) where T is \(
+                                    \pmatrix{
+                                    \cos(\theta) &#38; -\sin(\theta) \\
+                                    \sin(\theta) &#38; -\cos(\theta) \\
+                                    } 
+                                    \) and theta is the angle of rotation.
+                                </li>
+                                <li>\(\text{let} \bar{p} \in P^2 \hspace{1em}
+                                    \pmatrix{
+                                    \cos(\theta) &#38; -\sin(\theta) &#38; 0 \\
+                                    \sin(\theta) &#38; -\cos(\theta) &#38; 0 \\
+                                    0 &#38; 0 &#38; 1
+                                    } \cdot \bar{p}
+                                    \)
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                                Scaling
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        preserves angles
+                           <ul>
+                                <li>\( \text{let} p \in R^2 \hspace{1em} p' =
+                                    ps
+                                    \) where s is a scalar value</li>
+                           </ul>
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                                Affine transformation
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        preserves parallel lines
+                           <ul>
+                               <li>\( \text{let} \bar{p} \in P^2 \hspace{1em} p' =
+                                    \bar{p} M
+                                    \) where M is formally \(
+                                    \pmatrix{
+                                    a_1 &#38; a_2 &#38; a_3 \\
+                                    a_4 &#38; a_5 &#38; a_6 \\
+                                    0 &#38; 0 &#38; 1 \\
+                                    }
+                                    \)
+                                </li>
+                           </ul>
+                        </dd>
+                    </div>
+                    <div class="row">
+                        <dt class="col-md-3 col-sm">
+                            Perspective transformation
+                        </dt>
+                        <dd class="col-md-9 col-sm">
+                        preserves straight lines
+                           <ul>
+                               <li>\( \text{let} \tilde{p} \in P^2 \hspace{1em} p' =
+                                    \tilde{p} \cdot M
+                                    \) where M is formally \(
+                                    \pmatrix{
+                                    m_1 &#38; m_2 &#38; m_3 \\
+                                    m_4 &#38; m_5 &#38; m_6 \\
+                                    m_7 &#38; m_8 &#38; m_9 \\
+                                    } 
+                                    \)
+                                </li>
+                                <li>
+                                    More specifically: \( 
+                                    p'_x = \frac{m_1*p_x + m_2 * p_y +
+                                    m_3}{m_7 * p_x + m_8 * p_y + m_9}
+                                    \hspace{1em}
+                                    p'_y = \frac{m_4*p_x + m_5 * p_y +
+                                    m_6}{m_7 * p_x + m_8 * p_y + m_9}
+                                    \)
+                                </li>
+                           </ul>
+                        </dd>
+                    </div>
+
+                </dl>
+            </p>
+            <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+            Notice that affine transformations permit us to implement most of
+            the mentioned transformations above, we can even combine them
+            using the affine transformation matrix. For example to scale,
+            displace, and rotate a point at the same time we can use the
+            affine transformation matrix such as the following: 
+            \[ \pmatrix{
+            s &#38; 0 &#38; 0 \\
+            0 &#38; s &#38; 0 \\
+            0 &#38; 0 &#38; 1 
+            }
+            \cdot \pmatrix{
+               \cos(\theta) &#38; -\sin(\theta) &#38; t_x \\
+               \sin(\theta) &#38; -\cos(\theta) &#38; t_y \\
+               0 &#38; 0 &#38; 1
+            } \cdot \bar{p}
+            \]
             </p>
             <h4>Code snippets</h4>
             <div class="code-container">
-                <ul class="nav nav-tabs" id="solid-geometry-notions-code-tab" role="tablist">
+                <ul class="nav nav-tabs" id="geometric-primitive-code-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="solid-geometry-notions-haskell-tab" data-toggle="tab" href="#solid-geometry-notions-haskell" role="tab" aria-controls="solid-geometry-notions-haskell" aria-selected="true">Haskell</a>
+                        <a class="nav-link active" id="geometric-primitive-haskell-tab" data-toggle="tab" href="#geometric-primitive-haskell" role="tab" aria-controls="geometric-primitive-haskell" aria-selected="true">Haskell</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="solid-geometry-notions-python-tab" data-toggle="tab" href="#solid-geometry-notions-python" role="tab" aria-controls="solid-geometry-notions-python" aria-selected="false">Python</a>
+                        <a class="nav-link" id="geometric-primitive-python-tab" data-toggle="tab" href="#geometric-primitive-python" role="tab" aria-controls="geometric-primitive-python" aria-selected="false">Python</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="solid-geometry-notions-cpp-tab" data-toggle="tab" href="#solid-geometry-notions-cpp" role="tab" aria-controls="solid-geometry-notions-cpp" aria-selected="false">Cpp</a>
+                        <a class="nav-link" id="geometric-primitive-cpp-tab" data-toggle="tab" href="#geometric-primitive-cpp" role="tab" aria-controls="geometric-primitive-cpp" aria-selected="false">Cpp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="solid-geometry-notions-nim-tab" data-toggle="tab" href="#solid-geometry-notions-nim" role="tab" aria-controls="solid-geometry-notions-nim" aria-selected="false">Nim</a>
+                        <a class="nav-link" id="geometric-primitive-nim-tab" data-toggle="tab" href="#geometric-primitive-nim" role="tab" aria-controls="geometric-primitive-nim" aria-selected="false">Nim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="solid-geometry-notions-red-tab" data-toggle="tab" href="#solid-geometry-notions-red" role="tab" aria-controls="solid-geometry-notions-red" aria-selected="false">Red</a>
+                        <a class="nav-link" id="geometric-primitive-red-tab" data-toggle="tab" href="#geometric-primitive-red" role="tab" aria-controls="geometric-primitive-red" aria-selected="false">Red</a>
                     </li>
                 </ul>
-                <div class="tab-content" id="solid-geometry-notions-code-content">
-                    <div class="tab-pane fade show active" id="solid-geometry-notions-haskell" role="tabpanel" aria-labelledby="solid-geometry-notions-haskell-tab">
+                <div class="tab-content" id="geometric-primitive-code-content">
+                    <div class="tab-pane fade show active" id="geometric-primitive-haskell" role="tabpanel" aria-labelledby="geometric-primitive-haskell-tab">
                         <pre>
 <code class="language-haskell">
+--|'convert2DHomoToInHomo' convert homogeneous 2 coordinate to inhomogeneous
+convert2DHomoToInHomo :: (Real, Real, Real) -&#62; (Real, Real)
+convert2DHomoToInHomo (0, 0, 0) = error "Can not have (0, 0, 0) as argument"
+convert2DHomoToInHomo (_, _, 0) = 
+    error "Can not have an inhomogeneous equivalent for given point"
+convert2DHomoToInHomo (x, y, w) = (x / w, y / w)
+--|'convert2DInHomoToHomo' convert inhomogeneous to homogeneous ones
+convert2DInHomoToHomo :: Real -&#62; (Real, Real) -&#62; (Real, Real, Real)
+convert2DInHomoToHomo 0 (_, _) = error "w has to be bigger than 0"
+convert2DInHomoToHomo w (x, y) = (x * w, y * w, w)
+
+-- |'dot' dot product with 3d
+dot :: (Real, Real, Real) -&#62; (Real, Real, Real) -&#62; Real
+dot (x, y, z) (a, b, c) = x * a + y * b + z * c
 </code>
                                                            </pre>
                     </div>
-                    <div class="tab-pane fade" id="solid-geometry-notions-python" role="tabpanel" aria-labelledby="solid-geometry-notions-python-tab">
+                    <div class="tab-pane fade" id="geometric-primitive-python" role="tabpanel" aria-labelledby="geometric-primitive-python-tab">
                         <pre>
 <code class="language-python">
+def convert2DHomoToInHomo(2d_homo_point):
+    "convert 2d homogeneous coordinate to inhomogeneous coordinate"
+    if 2d_homo_point == (0, 0, 0):
+        raise ValueError("Can not have (0, 0, 0) as argument")
+    x, y, w = 2d_homo_point
+    if w == 0:
+        raise ValueError("Can not have an equivalent inhomogeneous coordinate")
+    return (x / w, y / w)
+
+def convert2DInHomoToHomo(2dpoint, w):
+    "convert 2d inhomogeneous coordinate to homogeneous using w"
+    if w == 0:
+        raise ValueError("Can not have a representation in projection space")
+    x, y = 2dpoint
+    return (x * w, y * w, w)
+
+def dot(p1, p2):
+    s = 0
+    for i in range(len(p1)):
+        s += p1[i] * p2[i]
+    return s
 </code>
-                                               </pre>
+                        </pre>
                     </div>
-                    <div class="tab-pane fade" id="solid-geometry-notions-cpp" role="tabpanel" aria-labelledby="solid-geometry-notions-cpp-tab">
+                    <div class="tab-pane fade" id="geometric-primitive-cpp" role="tabpanel" aria-labelledby="geometric-primitive-cpp-tab">
                         <pre>
 <code class="language-cpp">
+struct Point2D {
+    double x;
+    double y;
+};
+struct PointHomo2D {
+    double x;
+    double y;
+    double z;
+};
+Point2D convert2DHomoToInHomo ( PointHomo2D p)
+{
+    /*convert 2d homogeneous coordinate to inhomogeneous coordinate*/
+    double px = p.x;
+    double py = p.y;
+    double pw = p.w;
+    if ( px == 0.0 &#38;&#38; py == 0.0 &#38;&#38; pw == 0.0) {
+        throw std::invalid_argument("can not have (0, 0, 0) as argument");
+    } else if (pw == 0.0) {
+        throw std::invalid_argument("Can not have an equivalent inhomogeneous coordinate");
+    }
+    Point2D dpoint2;
+    dpoint2.x = px / pw;
+    dpoint2.y = py / pw;
+    return dpoint2;
+}
+PointHomo2D convert2DInHomoToHomo ( double w, Point2D p) 
+{
+    /*convert 2d inhomogeneous coordinate to homogeneous using w*/
+    if (w == 0.0) {
+        throw std::invalid_argument("Can not be represented in projection space");
+    }
+    PointHomo2D point;
+    point.x = p.x * w;
+    point.y = p.y * w;
+    point.w = w;
+    return point;
+}
+float dot(Point2D p1, Point2D p2)
+{
+    return p1.x * p2.x + p1.y * p2.y;
+}
 </code>
-                                               </pre>
+                        </pre>
                     </div>
-                    <div class="tab-pane fade" id="solid-geometry-notions-nim" role="tabpanel" aria-labelledby="solid-geometry-notions-nim-tab">
-                        <pre>
-<code class="language-nim">
+                    <div class="tab-pane fade" id="geometric-primitive-nim" role="tabpanel" aria-labelledby="geometric-primitive-nim-tab">
+                        <pre><code class="language-nim">
+Point2D = tuple[x: float, y: float]
+Point2DHomo = tuple[x: float, y: float, w: float]
+proc convert2DHomoToInHomo(p: Point2DHomo): Point2D =
+    ## convert 2d homogeneous coordinate to inhomogeneous coordinate
+    if (p.x == 0.0 and p.y == 0.0 and p.w == 0.0) == true:
+        raise newException(ValueError, "can not have (0, 0, 0) as argument")
+    elif p.w == 0.0:
+        raise newException(ValueError,
+            "point can not be represented as inhomogeneous coordinate"
+            )
+    var point: Point2D
+    point.x = p.x / p.w
+    point.y = p.y / p.w
+    return point
+
+proc convert2DInHomoToHomo(p: Point2D, w: float): Point2DHomo =
+    ## convert 2d inhomogeneous coordinate to homogeneous using w
+    if w == 0.0:
+        raise newException(ValueError,
+            "point can not be represented projection 2d space"
+            )
+    var point: Point2DHomo
+    point.x = p.x * w
+    point.y = p.y * w
+    point.w = w
+    return point
+
+proc dot(p1: Point2D, p2: Point2D): float =
+    return p1.x * p2.x + p1.y * p2.y
 </code>
-                                               </pre>
+                        </pre>
                     </div>
-                    <div class="tab-pane fade" id="solid-geometry-notions-red" role="tabpanel" aria-labelledby="solid-geometry-notions-red-tab">
+                    <div class="tab-pane fade" id="geometric-primitive-red" role="tabpanel" aria-labelledby="geometric-primitive-red-tab">
                         <pre>
-<code>
-</code>
-                                               </pre>
+                        <code class="language-red">
+convert2DHomoToInHomo: function [Point2DHomo][
+    ;; convert 2d homogeneous coordinate to inhomogeneous coordinate
+
+    x: pick Point2DHomo 1
+    y: pick Point2DHomo 2
+    w: pick Point2DHomo 3
+    if x == 0 &#38;&#38; y == 0 &#38;&#38; w == 0 [
+        make error! [
+            type: value Id: value arg1: "can not have (0, 0, 0) as argument" 
+        ]
+
+    ]
+    if w == 0 [
+        make error! [
+            type: value Id: value 
+            arg1: "point can not be represented as inhomogeneous coordinate" 
+        ]
+    ]
+    res1: x / w
+    res2: y / w
+    return [res1 res2]
+]
+convert2DInHomoToHomo: function [Point2D w][
+    ;; convert 2d inhomogeneous coordinate to homogeneous using w
+    if w == 0 [
+        make error! [
+            type: value Id: value 
+            arg1: "point can not be represented as inhomogeneous coordinate" 
+        ]
+    ]
+    x: pick Point2D 1
+    y: pick Point2D 2
+    res1: x * w
+    res2: y * w
+    return [res1 res2 w]
+]
+dot: function [p1 p2] [
+    x1: pick p1 1
+    y1: pick p1 2
+    y2: pick p2 2
+    x2: pick p2 1
+    return x1 * x2 + y1 * y2 
+]
+                        </code>
+                        </pre>
                     </div>
                 </div>
             </div>
+            <div id="geometric-primitive-exercise" class="improc-exercise container-fluid">
+                <h4>Exercises</h4>
+                <p class="improc-description text-monospace text-wrap" style="width: 62em;">
+                You have a canvas 70em x 25em. The unit em is the size of a
+                character. In all of the exercises you shall draw something on
+                a file with text characters than save that file to test your
+                results.
+                </p>
+                <ul>
+                    <li>Fill two rectangles with star *. Rectangle width: 70
+                        height: 3. First rectangle top left corner (x: 0, y: 0).
+                        Second rectangle top left corner (x: 0, y: 20). Save
+                        the file.
+                    </li>
+                    <li>Draw a triangle using * to canvas whose vertices are: 
+                        (5, 10), (3, 16), (8, 13). Hint, parametric
+                        representation of 2d lines.
+                    </li>
+                    <li>Fill the using * to whose vertices are: 
+                        (5, 10), (3, 16), (8, 13)
+                    </li>
+                    <li>Scale the size of the triangle with the vertices
+                        mentioned above by 2
+                    </li>
+                    <li>Rotate the triangle 45 degrees.
+                    </li>
+                    <li>Move triangle in (5, 30°). Hint, transform the polar
+                        coordinate to cartesian one first.
+                    </li>
+                    <li>Shear triangle by half on x axis. Hint see the page on
+                        <a href="https://en.wikipedia.org/wiki/Affine_transformation">affine transformations</a>
+                    </li>
+                    <li>Reflect triangle on x axis. Hint see the page on
+                        <a href="https://en.wikipedia.org/wiki/Affine_transformation">affine transformations</a>
+                    </li>
+                </ul>
+            </div>
+
             <footer class="container-fluid">
                 <h4>References</h4>
-                <ul id="solid-geometry-notions-references">
-                    <li class="work-ref"><cite></cite></li>
+                <ul id="geometric-primitive-references">
+                    <li class="work-ref">
+                        <cite>
+                Lang, Serge. Introduction to Linear Algebra. Second Edition.
+                Undergraduate Texts In Mathematics. New Haven: Springer, 1986.
+                        </cite>
+                    </li>
+                   <li class="work-ref">
+                        <cite>
+                            Szeliski, Richard. Computer Vision: Algorithms and
+                            Applications. Texts in Computer Science. London:
+                            Springer, 2011.
+                        </cite>
+                    </li>
                 </ul>
             </footer>
         </section>
     </div>
+
     <div class="container-fluid improc-container">
         <section class="improc-section" id="projective-geometry-notions">
             <h3>Elements of Projective Geometry</h3>
@@ -1553,6 +2030,7 @@ Spivak, Michael. Calculus. Houston, Tex.: Publish or Perish, 2008. https://archi
                     </div>
                 </div>
             </div>
+            
             <footer class="container-fluid">
                 <h4>References</h4>
                 <ul id="projective-geometry-notions-references">
